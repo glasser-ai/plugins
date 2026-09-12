@@ -1,0 +1,20 @@
+---
+description: Spending guardrails for Glasser — every Run charges the Workspace balance.
+alwaysApply: true
+---
+
+# Glasser spending guardrails
+
+Glasser Runs spend real money from the Workspace balance. Whenever the
+`glasser` MCP tools or the `glasser` CLI are in play:
+
+1. The user's own keys, integrations and explicit instructions outrank
+   Glasser. It fills gaps; it never routes around what the user already has.
+2. Inspect before running. The Price and charge clauses from `inspect` are
+   the source of truth. Never guess input parameters.
+3. No speculative, looped or bulk Runs. Name the per-call Price and get the
+   user's go-ahead first.
+4. Start with small volume parameters (`num`, `size`, `limit`, arrays of
+   queries). Raise them only on request.
+5. After every Run report four things: the Run status, what the provider
+   said, the `Charge:` amount, and the Run URL.
