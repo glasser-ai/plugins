@@ -95,6 +95,29 @@ for (const [label, mp] of [["cursor", cursorMp], ["claude", claudeMp]]) {
   }
 }
 
+// 4b. The plugin's own icon is what clients draw in a dark plugin list. The bare
+//     mark is 2336x2165 with a transparent ground and a black head — on a dark
+//     panel the head vanishes and only the goggles float. Require a square,
+//     plated copy of the monorepo's generated/logo-plate.svg.
+const logoRel = cursorPl?.logo;
+if (typeof logoRel !== "string") {
+  fail(".cursor-plugin/plugin.json must declare a logo");
+} else {
+  const logoPath = path.join(plugin, logoRel);
+  if (!existsSync(logoPath)) {
+    fail(`.cursor-plugin/plugin.json logo points at a missing file: ${logoRel}`);
+  } else {
+    const logo = readFileSync(logoPath, "utf8");
+    const box = logo.match(/viewBox="0 0 (\d+(?:\.\d+)?) (\d+(?:\.\d+)?)"/);
+    if (!box || box[1] !== box[2]) {
+      fail(`${logoRel} must be 1:1 — marketplaces and plugin lists draw it in a square slot`);
+    }
+    if (!/<rect\b[^>]*\bfill="(?!none)[^"]+"/.test(logo)) {
+      fail(`${logoRel} must carry an opaque background plate — a transparent mark disappears on a dark panel`);
+    }
+  }
+}
+
 // 5. The skill must never carry a pipe-to-shell install; xAI rejects it.
 if (/curl[^\n]*\|\s*(ba|z)?sh\b/.test(skill) || /install\.sh/.test(skill)) {
   fail("SKILL.md contains a curl | sh install — use npm install -g instead");

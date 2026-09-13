@@ -8,14 +8,14 @@
   },
   "metadata": {
     "description": "Official Glasser plugins — one key, no contract, pay per call, across paid APIs bought wholesale.",
-    "version": "0.1.0"
+    "version": "0.1.1"
   },
   "plugins": [
     {
       "name": "glasser",
       "source": "./plugins/glasser",
       "description": "1,000+ paid data endpoints behind one key. People and company enrichment, funding and hiring signals, SEO and keywords, Google SERP and shopping, local places, news, patents, tech stacks, and social media (TikTok, Instagram, YouTube, Reddit and more) from providers like People Data Labs, Ahrefs, DataForSEO, Serper and Apollo. Built for sales, marketing, research, recruiting, pricing and diligence. Your agent searches the catalog, sees the provider and Price before each call, and reports the charge after. Pay per call, no subscription; failed calls and empty results cost $0.00.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "Glasser",
         "url": "https://glasser.ai"
