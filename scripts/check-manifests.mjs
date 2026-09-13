@@ -96,9 +96,10 @@ for (const [label, mp] of [["cursor", cursorMp], ["claude", claudeMp]]) {
 }
 
 // 4b. The plugin's own icon is what clients draw in a dark plugin list. The bare
-//     mark is 2336x2165 with a transparent ground and a black head — on a dark
-//     panel the head vanishes and only the goggles float. Require a square,
-//     plated copy of the monorepo's generated/logo-plate.svg.
+//     mark is 2336x2165 and its primary pair has a black head — on a dark panel
+//     the head vanishes and only the goggles float. Require a square copy of the
+//     monorepo's generated/logo-panel.svg: transparent, so the client's own card
+//     shows through, with the reversed pair so the whole mark survives on it.
 const logoRel = cursorPl?.logo;
 if (typeof logoRel !== "string") {
   fail(".cursor-plugin/plugin.json must declare a logo");
@@ -112,8 +113,14 @@ if (typeof logoRel !== "string") {
     if (!box || box[1] !== box[2]) {
       fail(`${logoRel} must be 1:1 — marketplaces and plugin lists draw it in a square slot`);
     }
-    if (!/<rect\b[^>]*\bfill="(?!none)[^"]+"/.test(logo)) {
-      fail(`${logoRel} must carry an opaque background plate — a transparent mark disappears on a dark panel`);
+    // The mark is a head plus one goggle strap. In the primary pair the head is
+    // black, which vanishes on a dark panel and leaves the goggles floating; the
+    // reversed pair paints the head orange and only the strap black. So more than
+    // one black fill means someone copied the primary pair back in.
+    if ((logo.match(/fill="black"/g) ?? []).length > 1) {
+      fail(
+        `${logoRel} has a black head — it disappears on a dark plugin panel, leaving the goggles floating. Ship the reversed pair (generated/logo-panel.svg in the monorepo).`
+      );
     }
   }
 }

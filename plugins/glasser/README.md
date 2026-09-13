@@ -17,10 +17,12 @@ credentials: the server speaks OAuth, so the client signs the user in on
 first use. `scripts/check-manifests.mjs` fails if the two files differ at
 all, or if a header or variable creeps back in.
 
-`assets/logo.svg` is 1:1 with an opaque plate, a byte-identical copy of
-`docs/assets/brand/generated/logo-plate.svg` in the Glasser monorepo, where a
-generator produces it from the master mark. The bare mark is 2336x2165 with a
-transparent ground and a black head — on a dark plugin list the head vanishes
-and only the goggles float, which is why the plated copy is the one that ships.
-`check-manifests.mjs` asserts square and opaque so it cannot regress; when the
-mark changes, bring the new file over.
+`assets/logo.svg` is 1:1 and transparent, a byte-identical copy of
+`docs/assets/brand/generated/logo-panel.svg` in the Glasser monorepo, where a
+generator produces it from the master mark. Clients draw their own container —
+a dark rounded card — so the icon leaves the ground to them; a baked plate puts
+a white card on top of theirs. It ships the reversed colour pair for the same
+reason: the primary pair has a black head, which on a dark card vanishes and
+leaves the goggles floating. `check-manifests.mjs` asserts square and a
+non-black head so neither can regress; when the mark changes, bring the new
+file over.

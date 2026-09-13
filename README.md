@@ -108,7 +108,7 @@ plugins/glasser/
 ├── .mcp.json                     identical copy (read by Claude Code, Grok Build)
 ├── skills/glasser/SKILL.md
 ├── rules/glasser-spending.mdc
-└── assets/logo.svg               1:1 with a plate (see plugins/glasser/README.md)
+└── assets/logo.svg               1:1, transparent (see plugins/glasser/README.md)
 scripts/                          validators and the version bump
 ```
 
