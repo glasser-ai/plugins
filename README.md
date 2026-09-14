@@ -1,5 +1,7 @@
 # Glasser plugins
 
+[![MCP Badge](https://lobehub.com/badge/mcp/glasser)](https://lobehub.com/mcp/glasser)
+
 One key, no contract, pay per call, across paid APIs bought wholesale.
 
 Official agent plugins for [Glasser](https://glasser.ai). This repository is a
