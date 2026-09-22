@@ -11,11 +11,26 @@ the [repository README](../../README.md).
 | MCP server, identical copy | `.mcp.json` | Claude Code, Grok Build |
 | Rule | `rules/glasser-spending.mdc` | Cursor |
 | Logo | `assets/logo.svg` | marketplaces, and the plugin list inside the client |
+| Logo, rasterised | `assets/icon.png` | ClawHub's plugin catalogue |
+| Manifest | `openclaw.plugin.json` | ClawHub, OpenClaw |
 
 Both MCP files point at `https://api.glasser.ai/mcp` and carry no
 credentials: the server speaks OAuth, so the client signs the user in on
 first use. `scripts/check-manifests.mjs` fails if the two files differ at
 all, or if a header or variable creeps back in.
+
+`openclaw.plugin.json` carries the id, the display name and the one category
+ClawHub allows a plugin to declare; `clawhub package publish` refuses a bundle
+without it. It holds no version — the version travels on the publish command, so
+`check-manifests.mjs` has nothing extra to keep in step. It declares no
+entrypoint: an `openclaw.extensions` field would make OpenClaw take the native
+plugin path, and this package has no code to load. OpenClaw reads the bundle
+instead, mapping `skills/` to a skill root and `mcp.json` into `mcpServers`.
+
+`assets/icon.png` is that same mark at 1024x1024, rasterised from `logo.svg`.
+ClawHub ignores icon URLs and paths in the manifest and draws only a PNG bundled
+in the package; without one the catalogue falls back to a category glyph. Keep
+it under 512 KiB and regenerate it whenever `logo.svg` changes.
 
 `assets/logo.svg` is 1:1 and transparent, a byte-identical copy of
 `docs/assets/brand/generated/logo-panel.svg` in the Glasser monorepo, where a
