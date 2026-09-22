@@ -24,6 +24,7 @@ const claudeMp = readJson(path.join(root, ".claude-plugin/marketplace.json"));
 const cursorPl = readJson(path.join(plugin, ".cursor-plugin/plugin.json"));
 const claudePl = readJson(path.join(plugin, ".claude-plugin/plugin.json"));
 const agentPl = readJson(path.join(plugin, "plugin.json"));
+const pkg = readJson(path.join(plugin, "package.json"));
 const skillPath = path.join(plugin, "skills/glasser/SKILL.md");
 const skill = readFileSync(skillPath, "utf8");
 const frontmatter = skill.split("\n---\n")[0];
@@ -40,6 +41,7 @@ const versions = {
   "plugins/glasser/.cursor-plugin/plugin.json": cursorPl?.version,
   "plugins/glasser/.claude-plugin/plugin.json": claudePl?.version,
   "plugins/glasser/plugin.json": agentPl?.version,
+  "plugins/glasser/package.json": pkg?.version,
   "plugins/glasser/skills/glasser/SKILL.md metadata.version": frontmatterVersion,
 };
 const distinct = new Set(Object.values(versions));
@@ -55,6 +57,7 @@ const names = [
   [".cursor-plugin/plugin.json", cursorPl?.name],
   [".claude-plugin/plugin.json", claudePl?.name],
   ["plugin.json", agentPl?.name],
+  ["package.json", pkg?.name],
 ];
 for (const [label, name] of names) {
   if (name !== "glasser") fail(`${label}: name is ${JSON.stringify(name)}, expected "glasser"`);
