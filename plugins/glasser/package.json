@@ -1,0 +1,37 @@
+{
+  "name": "glasser",
+  "version": "0.1.2",
+  "description": "1,000+ paid data endpoints behind one key. Skill, MCP server and spending rule; no runtime code.",
+  "license": "MIT",
+  "homepage": "https://glasser.ai",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glasser-ai/plugins.git",
+    "directory": "plugins/glasser"
+  },
+  "files": [
+    "skills",
+    "rules",
+    "assets",
+    "README.md",
+    "plugin.json",
+    "openclaw.plugin.json",
+    "mcp.json",
+    ".mcp.json",
+    ".claude-plugin",
+    ".cursor-plugin"
+  ],
+  "openclaw": {
+    "compat": {
+      "pluginApi": ">=2026.9.5"
+    },
+    "install": {
+      "clawhubSpec": "clawhub:glasser",
+      "defaultChoice": "clawhub",
+      "localPath": "."
+    }
+  },
+  "scripts": {
+    "prepublishOnly": "node -e \"throw new Error('glasser ships through ClawHub and the agent marketplaces, not the npm registry')\""
+  }
+}

@@ -18,6 +18,7 @@ const targets = [
   ["plugins/glasser/.cursor-plugin/plugin.json", (d) => { d.version = next; }],
   ["plugins/glasser/.claude-plugin/plugin.json", (d) => { d.version = next; }],
   ["plugins/glasser/plugin.json", (d) => { d.version = next; }],
+  ["plugins/glasser/package.json", (d) => { d.version = next; }],
 ];
 for (const [file, apply] of targets) {
   const p = path.join(root, file);
