@@ -36,6 +36,8 @@ jobs:
     uses: openclaw/clawhub/.github/workflows/package-publish.yml@v0.23.3
     with:
       dry_run: false
-      owner: glasser-ai
+      # No owner here. A trusted publish takes the owner from the OIDC claim
+      # and the package's trusted-publisher config; passing it is refused with
+      # "Trusted publishes must not override the package owner".
       family: bundle-plugin
       source_path: plugins/glasser
