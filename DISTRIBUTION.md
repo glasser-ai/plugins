@@ -11,7 +11,7 @@ checks that keep the package consistent.
 | xAI plugin-marketplace (Grok Build) | PR adding one catalog entry pinned to a commit `sha` | not submitted |
 | Claude Code, self-hosted marketplace | `/plugin marketplace add glasser-ai/plugins` | live on push |
 | `npx plugins add glasser-ai/plugins` | root `plugin.json` | live on push |
-| ClawHub (OpenClaw) | `clawhub package publish ./plugins/glasser --family bundle-plugin --owner glasser-ai` | live |
+| ClawHub (OpenClaw) | the `publish` workflow, or `clawhub package publish ./plugins/glasser --family bundle-plugin --owner glasser-ai` | live |
 | MCP Registry (`server.json`) | DNS TXT record on the `glasser.ai` apex | not started |
 
 ## Release checklist
@@ -22,7 +22,11 @@ checks that keep the package consistent.
    change without a bump reaches nobody.
 3. `node scripts/validate-template.mjs && node scripts/check-manifests.mjs`
 4. Commit and push.
-5. xAI catalog, once listed: open a PR bumping the pinned `sha`.
+5. ClawHub: run the `publish` workflow from the Actions tab once the bump is on
+   `main`. ClawHub versions are immutable, so a republish without a bump is
+   refused. Pull requests that touch `plugins/glasser/` already run the same
+   workflow with `dry_run: true`.
+6. xAI catalog, once listed: open a PR bumping the pinned `sha`.
 
 ## Version ownership
 

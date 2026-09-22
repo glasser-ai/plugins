@@ -1,0 +1,34 @@
+name: publish
+
+on:
+  pull_request:
+    paths:
+      - "plugins/glasser/**"
+      - ".github/workflows/publish.yml"
+  workflow_dispatch:
+
+jobs:
+  # Every PR that touches the package previews the publish. Nothing is uploaded.
+  dry-run:
+    if: github.event_name == 'pull_request'
+    uses: openclaw/clawhub/.github/workflows/package-publish.yml@v0.23.3
+    with:
+      dry_run: true
+      owner: glasser-ai
+      family: bundle-plugin
+      source_path: plugins/glasser
+
+  # Real publish, run by hand once a version bump has landed on main.
+  # id-token lets ClawHub mint a short-lived token from the OIDC claim, so the
+  # repository stores no ClawHub credential.
+  publish:
+    if: github.event_name == 'workflow_dispatch'
+    permissions:
+      contents: read
+      id-token: write
+    uses: openclaw/clawhub/.github/workflows/package-publish.yml@v0.23.3
+    with:
+      dry_run: false
+      owner: glasser-ai
+      family: bundle-plugin
+      source_path: plugins/glasser
