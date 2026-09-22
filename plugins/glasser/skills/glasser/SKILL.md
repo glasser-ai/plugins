@@ -11,7 +11,7 @@ description: >
   user already has their own key or integration for a specific provider, use
   that first.
 metadata:
-  version: "0.1.2"
+  version: "0.1.3"
 ---
 
 # Glasser CLI

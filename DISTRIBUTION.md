@@ -11,6 +11,7 @@ checks that keep the package consistent.
 | xAI plugin-marketplace (Grok Build) | PR adding one catalog entry pinned to a commit `sha` | not submitted |
 | Claude Code, self-hosted marketplace | `/plugin marketplace add glasser-ai/plugins` | live on push |
 | `npx plugins add glasser-ai/plugins` | root `plugin.json` | live on push |
+| ClawHub (OpenClaw) | `clawhub package publish ./plugins/glasser --family bundle-plugin --owner glasser-ai` | live |
 | MCP Registry (`server.json`) | DNS TXT record on the `glasser.ai` apex | not started |
 
 ## Release checklist
