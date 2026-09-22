@@ -104,11 +104,13 @@ plugins/glasser/
 ├── plugin.json                   Agent Plugins manifest
 ├── .cursor-plugin/plugin.json    Cursor manifest (carries rules/)
 ├── .claude-plugin/plugin.json    Claude Code / Grok Build manifest
+├── openclaw.plugin.json          OpenClaw manifest (ClawHub requires it to publish)
 ├── mcp.json                      MCP server (read by Cursor, Agent Plugins)
 ├── .mcp.json                     identical copy (read by Claude Code, Grok Build)
 ├── skills/glasser/SKILL.md
 ├── rules/glasser-spending.mdc
-└── assets/logo.svg               1:1, transparent (see plugins/glasser/README.md)
+├── assets/logo.svg               1:1, transparent (see plugins/glasser/README.md)
+└── assets/icon.png               the same mark, rasterised for ClawHub
 scripts/                          validators and the version bump
 ```
 
