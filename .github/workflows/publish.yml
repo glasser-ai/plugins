@@ -11,6 +11,12 @@ jobs:
   # Every PR that touches the package previews the publish. Nothing is uploaded.
   dry-run:
     if: github.event_name == 'pull_request'
+    # The reusable job declares id-token: write, and a called workflow cannot
+    # hold more than the caller grants, so this has to match even for a preview.
+    permissions:
+      actions: read
+      contents: read
+      id-token: write
     uses: openclaw/clawhub/.github/workflows/package-publish.yml@v0.23.3
     with:
       dry_run: true
@@ -24,6 +30,7 @@ jobs:
   publish:
     if: github.event_name == 'workflow_dispatch'
     permissions:
+      actions: read
       contents: read
       id-token: write
     uses: openclaw/clawhub/.github/workflows/package-publish.yml@v0.23.3
