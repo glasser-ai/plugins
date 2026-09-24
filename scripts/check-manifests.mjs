@@ -24,6 +24,7 @@ const claudeMp = readJson(path.join(root, ".claude-plugin/marketplace.json"));
 const cursorPl = readJson(path.join(plugin, ".cursor-plugin/plugin.json"));
 const claudePl = readJson(path.join(plugin, ".claude-plugin/plugin.json"));
 const agentPl = readJson(path.join(plugin, "plugin.json"));
+const codexPl = readJson(path.join(plugin, ".codex-plugin/plugin.json"));
 const pkg = readJson(path.join(plugin, "package.json"));
 const skillPath = path.join(plugin, "skills/glasser/SKILL.md");
 const skill = readFileSync(skillPath, "utf8");
@@ -41,6 +42,7 @@ const versions = {
   "plugins/glasser/.cursor-plugin/plugin.json": cursorPl?.version,
   "plugins/glasser/.claude-plugin/plugin.json": claudePl?.version,
   "plugins/glasser/plugin.json": agentPl?.version,
+  "plugins/glasser/.codex-plugin/plugin.json": codexPl?.version,
   "plugins/glasser/package.json": pkg?.version,
   "plugins/glasser/skills/glasser/SKILL.md metadata.version": frontmatterVersion,
 };
@@ -57,6 +59,7 @@ const names = [
   [".cursor-plugin/plugin.json", cursorPl?.name],
   [".claude-plugin/plugin.json", claudePl?.name],
   ["plugin.json", agentPl?.name],
+  [".codex-plugin/plugin.json", codexPl?.name],
   ["package.json", pkg?.name],
 ];
 for (const [label, name] of names) {
@@ -126,6 +129,39 @@ if (typeof logoRel !== "string") {
       );
     }
   }
+}
+
+// OpenAI 的插件图标与 Skill 图标分别声明；资产存在并不代表客户端会自动使用。
+if (agentPl?.extensions?.["com.openai"]) {
+  fail("plugin.json must not shadow the .codex-plugin/plugin.json overlay");
+}
+// 组件由根 plugin.json 的 Agent Plugins 格式自动发现，兼容配置只负责展示。
+if (codexPl?.skills !== undefined || codexPl?.mcpServers !== undefined) {
+  fail(".codex-plugin/plugin.json must leave component discovery to the portable manifest");
+}
+if (!pkg?.files?.includes(".codex-plugin")) {
+  fail("package.json files must include .codex-plugin");
+}
+for (const field of ["composerIcon", "logo", "logoDark"]) {
+  const asset = codexPl?.interface?.[field];
+  if (asset !== "./assets/icon.png" || !existsSync(path.join(plugin, asset))) {
+    fail(`.codex-plugin/plugin.json interface.${field} must reference the existing ./assets/icon.png`);
+  }
+}
+const skillAgentPath = path.join(plugin, "skills/glasser/agents/openai.yaml");
+const skillIconPath = path.join(plugin, "skills/glasser/assets/icon.png");
+if (!existsSync(skillAgentPath)) {
+  fail("Skill must include agents/openai.yaml for its OpenAI icon");
+} else {
+  const agent = readFileSync(skillAgentPath, "utf8");
+  for (const field of ["icon_small", "icon_large"]) {
+    if (!agent.includes(`  ${field}: "./assets/icon.png"`)) {
+      fail(`Skill agents/openai.yaml ${field} must reference ./assets/icon.png`);
+    }
+  }
+}
+if (!existsSync(skillIconPath) || !readFileSync(skillIconPath).equals(readFileSync(path.join(plugin, "assets/icon.png")))) {
+  fail("Skill assets/icon.png must match the plugin's assets/icon.png");
 }
 
 // 5. The skill must never carry a pipe-to-shell install; xAI rejects it.

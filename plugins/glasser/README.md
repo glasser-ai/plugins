@@ -41,3 +41,17 @@ reason: the primary pair has a black head, which on a dark card vanishes and
 leaves the goggles floating. `check-manifests.mjs` asserts square and a
 non-black head so neither can regress; when the mark changes, bring the new
 file over.
+
+## ChatGPT / Codex 图标
+
+`.codex-plugin/plugin.json` 提供 OpenAI 展示配置，引用现有的
+`assets/icon.png`，用于插件 Logo 和输入框图标。根目录的 `plugin.json`
+保留 Agent Plugins 格式；不要另加 `extensions.com.openai`，否则会覆盖
+这份兼容配置。
+
+Skill 单独通过 `skills/glasser/agents/openai.yaml` 声明图标。
+`skills/glasser/assets/icon.png` 是插件 PNG 的逐字节副本，保证单独分发
+Skill 时图标仍在包内。更新 Logo 时同步这两份 PNG；一致性检查会拦截遗漏。
+
+修改源仓库不会替换客户端已经安装的缓存。发布新版本后，需要更新插件，
+再打开新聊天检查图标与工具。图标校验通过不代表 MCP 已完成 OAuth 授权。

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Glasser"
+  short_description: "Search, inspect and run paid data APIs with one key."
+  icon_small: "./assets/icon.png"
+  icon_large: "./assets/icon.png"
+  brand_color: "#F26339"
+  default_prompt: "Use $glasser to find company data sources and compare prices."

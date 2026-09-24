@@ -1,11 +1,9 @@
 {
-  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "glasser",
   "version": "0.1.4",
   "description": "1,000+ paid data endpoints behind one key. People and company enrichment, funding and hiring signals, SEO and keywords, Google SERP and shopping, local places, news, patents, tech stacks, and social media (TikTok, Instagram, YouTube, Reddit and more) from providers like People Data Labs, Ahrefs, DataForSEO, Serper and Apollo. Built for sales, marketing, research, recruiting, pricing and diligence. Your agent searches the catalog, sees the provider and Price before each call, and reports the charge after. Pay per call, no subscription; failed calls and empty results cost $0.00.",
   "author": {
     "name": "Glasser",
-    "email": "support@glasser.ai",
     "url": "https://glasser.ai"
   },
   "homepage": "https://glasser.ai",
@@ -38,6 +36,25 @@
     "tech stack",
     "mcp"
   ],
-  "skills": "./skills",
-  "mcpServers": "./.mcp.json"
+  "interface": {
+    "displayName": "Glasser",
+    "shortDescription": "Search, inspect and run paid data APIs with one key.",
+    "longDescription": "1,000+ paid data endpoints behind one key. People and company enrichment, funding and hiring signals, SEO and keywords, Google SERP and shopping, local places, news, patents, tech stacks, and social media (TikTok, Instagram, YouTube, Reddit and more) from providers like People Data Labs, Ahrefs, DataForSEO, Serper and Apollo. Built for sales, marketing, research, recruiting, pricing and diligence. Your agent searches the catalog, sees the provider and Price before each call, and reports the charge after. Pay per call, no subscription; failed calls and empty results cost $0.00.",
+    "developerName": "Glasser",
+    "category": "Research",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://glasser.ai",
+    "privacyPolicyURL": "https://glasser.ai/privacy-policy",
+    "termsOfServiceURL": "https://glasser.ai/terms-of-service",
+    "defaultPrompt": [
+      "Use Glasser to find company data sources and compare prices."
+    ],
+    "brandColor": "#F26339",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
+    "logoDark": "./assets/icon.png"
+  }
 }

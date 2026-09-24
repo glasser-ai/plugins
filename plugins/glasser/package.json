@@ -1,6 +1,6 @@
 {
   "name": "glasser",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "1,000+ paid data endpoints behind one key. Skill, MCP server and spending rule; no runtime code.",
   "license": "MIT",
   "homepage": "https://glasser.ai",
@@ -19,7 +19,8 @@
     "mcp.json",
     ".mcp.json",
     ".claude-plugin",
-    ".cursor-plugin"
+    ".cursor-plugin",
+    ".codex-plugin"
   ],
   "openclaw": {
     "compat": {
