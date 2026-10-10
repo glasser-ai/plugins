@@ -11,7 +11,7 @@ description: >
   user already has their own key or integration for a specific provider, use
   that first.
 metadata:
-  version: "0.1.5"
+  version: "0.1.6"
 ---
 
 # Glasser CLI
@@ -87,7 +87,7 @@ Key into the conversation.
 **With the CLI**, a missing or rejected Key needs login. Handle other
 failures from the error message instead of starting another login.
 
-**With a user present**, run `glasser login` with your shell tool's background
+**With a user present**, run `GLASSER_UTM_SOURCE=glasser-plugins GLASSER_UTM_MEDIUM=plugin glasser login` with your shell tool's background
 execution support. The CLI opens the sign-in page when possible and prints
 a fallback URL and matching code. Sign-in completes when the user checks
 the code and approves in the browser. Relay the CLI's URL and code exactly
@@ -176,7 +176,7 @@ Wait for the user to choose before starting a paid Run.
 
 | Command | Purpose |
 |---|---|
-| `glasser login` | Browser device authorization; stores a Key |
+| `GLASSER_UTM_SOURCE=glasser-plugins GLASSER_UTM_MEDIUM=plugin glasser login` | Browser device authorization; stores a Key |
 | `glasser search [-q <query>] [--limit N] [--cursor C]` | Search Endpoints, 5 per page (max 20); `--cursor` takes the next-page cursor printed after a page; bare `search` lists every data source |
 | `glasser inspect -p <provider> -e <endpoint> [--endpoint-version N]` | Schemas, current Price, charge clauses, supported version |
 | `glasser run -p <provider> -e <endpoint> [-i '<json>' \| -f <file>] [--idempotency-key K] [--wait] [--wait-timeout s] [-o file]` | Execute an Endpoint |
@@ -224,7 +224,7 @@ keep talking can fire without `--wait` and poll between replies.
 
 | Symptom | Meaning / action |
 |---|---|
-| `Invalid or missing API key` | The Key is wrong, revoked, or for another stack. MCP tools: the client is not signed in, or the `MCP · <client>` Key was revoked — sign in again from the client's MCP settings. CLI, interactive: run `glasser login` again. CI: re-check `GLASSER_API_KEY` |
+| `Invalid or missing API key` | The Key is wrong, revoked, or for another stack. MCP tools: the client is not signed in, or the `MCP · <client>` Key was revoked — sign in again from the client's MCP settings. CLI, interactive: run `GLASSER_UTM_SOURCE=glasser-plugins GLASSER_UTM_MEDIUM=plugin glasser login` again. CI: re-check `GLASSER_API_KEY` |
 | Exit `2` | Your command line is wrong — fix it from the message; nothing reached the API and nothing was charged |
 | `Input does not match the endpoint's input schema` | Read the `issues:` lines under the error — they name the exact field and constraint. No Run was created and nothing was charged; fix the input and run again |
 | `insufficient balance` | The Workspace cannot cover the Price. Tell the user to top up in the console — do not retry |
@@ -260,7 +260,7 @@ keep talking can fire without `--wait` and poll between replies.
 3. Runs spend the Workspace balance: no speculative, looped, or bulk runs
    without naming the per-call Price and getting the user's go-ahead.
 4. Start with small volume parameters; raise them only on request.
-5. Auth is the client's own sign-in (MCP tools) or `glasser login` (CLI) —
+5. Auth is the client's own sign-in (MCP tools) or `GLASSER_UTM_SOURCE=glasser-plugins GLASSER_UTM_MEDIUM=plugin glasser login` (CLI) —
    never ask the user to paste a Key into the conversation.
 6. On an ambiguous failure, retry with the SAME Idempotency-Key.
 7. Report two indicators after every run — the Run status and what the
