@@ -5,12 +5,31 @@ on:
     paths:
       - "plugins/glasser/**"
       - ".github/workflows/publish.yml"
+      - "scripts/pack-clawhub.mjs"
   workflow_dispatch:
 
 jobs:
+  # ClawHub gets a copy that names ClawHub as the install source
+  # (scripts/pack-clawhub.mjs); the repo files serve the other marketplaces.
+  pack:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/pack-clawhub.mjs dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: clawhub-package
+          path: dist/*.tgz
+
   # Every PR that touches the package previews the publish. Nothing is uploaded.
   dry-run:
     if: github.event_name == 'pull_request'
+    needs: pack
     # The reusable job declares id-token: write, and a called workflow cannot
     # hold more than the caller grants, so this has to match even for a preview.
     permissions:
@@ -23,12 +42,14 @@ jobs:
       owner: glasser-ai
       family: bundle-plugin
       source_path: plugins/glasser
+      package_artifact_name: clawhub-package
 
   # Real publish, run by hand once a version bump has landed on main.
   # id-token lets ClawHub mint a short-lived token from the OIDC claim, so the
   # repository stores no ClawHub credential.
   publish:
     if: github.event_name == 'workflow_dispatch'
+    needs: pack
     permissions:
       actions: read
       contents: read
@@ -41,3 +62,4 @@ jobs:
       # "Trusted publishes must not override the package owner".
       family: bundle-plugin
       source_path: plugins/glasser
+      package_artifact_name: clawhub-package
