@@ -3,7 +3,7 @@
   "mcpServers": {
     "glasser": {
       "type": "http",
-      "url": "https://api.glasser.ai/mcp"
+      "url": "https://api.glasser.ai/mcp?utm_source=glasser-plugins&utm_medium=plugin"
     }
   }
 }
