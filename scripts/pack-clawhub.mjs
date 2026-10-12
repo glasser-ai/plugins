@@ -5,7 +5,7 @@
 // of them. This writes a copy where the login command and the MCP URL carry
 // utm_source=clawhub, then runs `npm pack` on the copy. The publish workflow
 // hands the .tgz to ClawHub; the files in the repo stay as they are.
-import { cpSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { cpSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import path from "node:path";
@@ -47,4 +47,5 @@ for (const file of ["mcp.json", ".mcp.json"]) {
   });
 }
 
+mkdirSync(outDir, { recursive: true });
 execFileSync("npm", ["pack", "--pack-destination", outDir], { cwd: work, stdio: "inherit" });
