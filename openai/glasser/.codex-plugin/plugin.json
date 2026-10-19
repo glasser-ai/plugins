@@ -1,7 +1,7 @@
 {
   "name": "glasser",
   "version": "1.0.0",
-  "description": "Glasser helps users discover data endpoints, inspect their inputs and Price, and run authorized company, people, search, website, review, social, place, news and property research through ChatGPT.",
+  "description": "Glasser helps users discover data endpoints, inspect their inputs and Price, and run authorized company, prospect, search, website, review, social, place, news and property research through ChatGPT.",
   "author": {
     "name": "Glasser",
     "url": "https://glasser.ai"
@@ -12,13 +12,13 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Glasser",
-    "shortDescription": "Research companies and people",
-    "longDescription": "Glasser helps users discover data endpoints, inspect their inputs and Price, and run authorized company, people, search, website, review, social, place, news and property research through ChatGPT.",
+    "shortDescription": "Research companies and markets",
+    "longDescription": "Glasser helps users discover data endpoints, inspect their inputs and Price, and run authorized company, prospect, search, website, review, social, place, news and property research through ChatGPT.",
     "developerName": "Glasser",
     "category": "Business & Operations",
     "capabilities": [
       "Company research",
-      "People research",
+      "Prospect research",
       "Search and SEO research",
       "Website and review research",
       "Social research",

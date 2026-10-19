@@ -1,6 +1,6 @@
 interface:
   display_name: "Glasser"
-  short_description: "Research companies and people"
+  short_description: "Research companies and markets"
   icon_small: "./assets/icon.png"
   icon_large: "./assets/icon.png"
   brand_color: "#F26339"
