@@ -45,33 +45,33 @@
           "positive": [
             {
               "description": "Company intelligence before a sales call: headcount and growth, funding and tech stack.",
-              "prompt": "Before my sales call with Notion, give me its employee count and headcount growth over the past year, its latest funding round and investors, and the main tools in its tech stack.",
+              "prompt": "Use Glasser to get Notion's (notion.com) current employee count, its headcount change over the last 12 months, its latest funding round with the lead investors, and the main technologies detected on its website.",
               "tools_triggered": "search, inspect, run",
-              "expected_behavior": "After the user confirms each run in ChatGPT, reports Notion's employee count and one-year headcount growth, latest funding round with investors, and main tech-stack tools from the returned data, labels estimates and says what is missing."
+              "expected_behavior": "Reports Notion's employee count and one-year headcount growth, latest funding round with investors, and main tech-stack tools from the returned data, labels estimates and says what is missing."
             },
             {
               "description": "SEO competitive data: organic traffic, ranking keywords, referring domains and a keyword gap.",
-              "prompt": "Compare notion.so, coda.io and clickup.com on estimated US organic traffic, number of ranking keywords and referring domains, and list five keywords where coda.io ranks in the top 10 but notion.so does not.",
+              "prompt": "Use Glasser to compare notion.com, coda.io and clickup.com in the US on estimated monthly organic traffic, number of ranking keywords and referring domains. Then list 5 keywords where coda.io ranks in the top 10 and notion.com does not, with their monthly search volume.",
               "tools_triggered": "search, inspect, run",
-              "expected_behavior": "After the user confirms each run in ChatGPT, compares the three domains on estimated US organic traffic, ranking keywords and referring domains, and lists five keywords where coda.io ranks in the top 10 and notion.so does not."
+              "expected_behavior": "Compares the three domains on estimated US organic traffic, ranking keywords and referring domains, and lists five keywords where coda.io ranks in the top 10 and notion.com does not, with monthly search volume."
             },
             {
               "description": "Prospect list: companies matching firmographic filters with a hiring signal.",
-              "prompt": "Find 10 B2B software companies in Germany with 50 to 200 employees that are currently hiring for sales roles, with their website and employee count.",
+              "prompt": "Use Glasser to find 10 B2B SaaS companies in Germany with 50 to 200 employees that have open sales job postings right now. For each, show the company name, website, employee count and one open sales role.",
               "tools_triggered": "search, inspect, run",
-              "expected_behavior": "After the user confirms each run in ChatGPT, lists up to 10 German B2B software companies with 50 to 200 employees and open sales roles, with website and employee count."
+              "expected_behavior": "Lists up to 10 German B2B SaaS companies with 50 to 200 employees and open sales roles, with name, website, employee count and one open sales role each."
             },
             {
               "description": "App Store review analysis; the run is asynchronous.",
-              "prompt": "What are the three most common complaints and the three most praised features in recent App Store reviews of the Duolingo app?",
+              "prompt": "Use Glasser to pull the 100 most recent US App Store reviews of the Duolingo app, then give me the three most common complaints and the three most praised features, each with a short quote.",
               "tools_triggered": "search, inspect, run, runs_get",
-              "expected_behavior": "After the user confirms the run in ChatGPT, gets the result with runs_get while it is still working, then lists three common complaints and three praised features with short examples from the returned reviews."
+              "expected_behavior": "Gets the reviews with runs_get while the run is still working, then lists three common complaints and three praised features, each with a short quote from the returned reviews."
             },
             {
               "description": "US property value and rent with comparable rentals.",
-              "prompt": "What is the estimated market value and typical monthly rent for 2100 Guadalupe St, Austin, TX 78705, and what are three comparable rentals nearby?",
+              "prompt": "Use Glasser to get the estimated market value and estimated monthly rent for 2100 Guadalupe St, Austin, TX 78705, plus three comparable rentals nearby with their monthly rents.",
               "tools_triggered": "search, inspect, run",
-              "expected_behavior": "After the user confirms each run in ChatGPT, reports the property's estimated value and rent estimate and three comparable nearby rentals from the returned data, labelled as estimates."
+              "expected_behavior": "Reports the property's estimated value and rent estimate and three comparable nearby rentals with their monthly rents, labelled as estimates."
             }
           ],
           "negative": [
