@@ -44,47 +44,47 @@
         "test_cases": {
           "positive": [
             {
-              "description": "Company lookup: find a company's industry and size.",
-              "prompt": "Find the industry and employee count of stripe.com.",
+              "description": "Sales call brief: company profile, size, recent news and website traffic trend.",
+              "prompt": "I have a sales call with Notion next week. Give me a short brief: what the company does, how big it is, what has been in the news about it in the past month, and how its website traffic has trended recently.",
               "tools_triggered": "search, inspect, run",
-              "expected_behavior": "After the user confirms the run in ChatGPT, answers with Stripe's industry and employee count from the returned data, names the source, and reports the run status and charge."
+              "expected_behavior": "After the user confirms each run in ChatGPT, returns a short brief covering Notion's business, size, news from the past month and recent website traffic trend, labels estimates as estimates and says what data is missing."
             },
             {
-              "description": "Search visibility: compare two websites' organic search traffic.",
-              "prompt": "Compare the organic search traffic of notion.so and coda.io in the US.",
+              "description": "Competitor search visibility and keyword gaps.",
+              "prompt": "Compare how visible notion.so, coda.io and clickup.com are in US Google search, and list five keywords where coda.io ranks in the top 10 but notion.so does not.",
               "tools_triggered": "search, inspect, run",
-              "expected_behavior": "After the user confirms the run in ChatGPT, compares the two domains' estimated organic traffic in the US, labels the figures as estimates, and reports the charge."
+              "expected_behavior": "After the user confirms each run in ChatGPT, compares the three domains' estimated US organic search visibility and lists five keywords where coda.io ranks in the top 10 and notion.so does not."
             },
             {
-              "description": "App reviews: summarize recent reviews; the run is asynchronous.",
-              "prompt": "Summarize what users say about the Duolingo app in its recent App Store reviews.",
+              "description": "App feedback from recent App Store reviews; the run is asynchronous.",
+              "prompt": "What are the three most common complaints and the three most praised features in recent App Store reviews of the Duolingo app?",
               "tools_triggered": "search, inspect, run, runs_get",
-              "expected_behavior": "After the user confirms the run in ChatGPT, polls runs_get while the run is QUEUED or RUNNING, then summarizes common praise and complaints from the returned reviews and reports the charge."
+              "expected_behavior": "After the user confirms the run in ChatGPT, gets the result with runs_get while it is still working, then lists three common complaints and three praised features from the returned reviews with short examples."
             },
             {
-              "description": "Local businesses: find places in an area.",
-              "prompt": "Find highly rated coffee shops near Union Square in San Francisco.",
+              "description": "Location research for a new coffee shop: nearby competitors, ratings and review themes.",
+              "prompt": "I'm thinking of opening a coffee shop near Union Square in San Francisco. Which coffee shops are already within walking distance, how are they rated, and what do reviewers praise or complain about most?",
               "tools_triggered": "search, inspect, run",
-              "expected_behavior": "After the user confirms the run in ChatGPT, lists coffee shops near Union Square with their ratings from the returned data and reports the charge."
+              "expected_behavior": "After the user confirms each run in ChatGPT, lists nearby coffee shops with their ratings and summarizes what reviewers praise and complain about most."
             },
             {
-              "description": "News: recent coverage of a company.",
-              "prompt": "What has been in the news about Stripe this week?",
+              "description": "Creator research: YouTube channels in a niche with audience size and recent topics.",
+              "prompt": "Find three active YouTube channels that review project management software, with their subscriber counts and what their most recent videos were about.",
               "tools_triggered": "search, inspect, run",
-              "expected_behavior": "After the user confirms the run in ChatGPT, summarizes this week's news about Stripe with the source of each item and reports the charge."
+              "expected_behavior": "After the user confirms each run in ChatGPT, lists three relevant YouTube channels with subscriber counts and the topics of their most recent videos."
             }
           ],
           "negative": [
             {
-              "description": "The user supplies the text; ChatGPT rewrites it directly without Glasser.",
+              "description": "The user supplies the text, so ChatGPT rewrites it directly without Glasser.",
               "prompt": "Rewrite this paragraph to sound clearer and shorter: Our team has been working very hard over the past several months in order to make sure that the new version of the product is able to meet all of the needs that our customers have told us about, and we are very excited to finally be able to share it with everyone."
             },
             {
-              "description": "Glasser has no calendar access; it should not be used, and ChatGPT should say it cannot reach the calendar through this plugin.",
-              "prompt": "What meetings do I have tomorrow, and can you move the first one?"
+              "description": "A writing task that needs no external data; ChatGPT drafts the email directly without calling Glasser, even though a company is named.",
+              "prompt": "Draft a short cold email to Stripe's head of sales introducing our analytics product."
             },
             {
-              "description": "General knowledge; ChatGPT answers directly without calling Glasser.",
+              "description": "General knowledge; ChatGPT answers directly without calling Glasser, even though the topic is SEO.",
               "prompt": "Explain the difference between SEO and SEM."
             }
           ]
