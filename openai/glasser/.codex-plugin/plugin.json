@@ -1,7 +1,7 @@
 {
   "name": "glasser",
   "version": "1.0.0",
-  "description": "Glasser helps users discover data endpoints, inspect their inputs and Price, and run authorized company, prospect, search, website, review, social, place, news and property research through ChatGPT.",
+  "description": "Research companies, markets and the web inside ChatGPT. Glasser connects ChatGPT to live data on companies and prospects, search rankings and keywords, websites and online reviews, social profiles, local businesses, news and property records. Ask things like \"What industry is example.com in and how many employees does it have?\" or \"Compare search visibility for example.com and a competitor\", and ChatGPT finds a suitable data endpoint, shows its inputs and Price, and runs it once you approve. Built for sales, marketing and research teams that need answers grounded in returned data.",
   "author": {
     "name": "Glasser",
     "url": "https://glasser.ai"
@@ -12,28 +12,26 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Glasser",
-    "shortDescription": "Research companies and markets",
-    "longDescription": "Glasser helps users discover data endpoints, inspect their inputs and Price, and run authorized company, prospect, search, website, review, social, place, news and property research through ChatGPT.",
+    "shortDescription": "Company, web & market data",
+    "longDescription": "Research companies, markets and the web inside ChatGPT. Glasser connects ChatGPT to live data on companies and prospects, search rankings and keywords, websites and online reviews, social profiles, local businesses, news and property records. Ask things like \"What industry is example.com in and how many employees does it have?\" or \"Compare search visibility for example.com and a competitor\", and ChatGPT finds a suitable data endpoint, shows its inputs and Price, and runs it once you approve. Built for sales, marketing and research teams that need answers grounded in returned data.",
     "developerName": "Glasser",
     "category": "Business & Operations",
     "capabilities": [
-      "Company research",
+      "Company data",
       "Prospect research",
-      "Search and SEO research",
-      "Website and review research",
-      "Social research",
-      "Local place research",
-      "News research",
-      "Property research"
+      "SEO and search data",
+      "Reviews and social data",
+      "Local business data",
+      "News and property data"
     ],
     "websiteURL": "https://glasser.ai",
     "privacyPolicyURL": "https://glasser.ai/privacy-policy",
     "termsOfServiceURL": "https://glasser.ai/terms-of-service",
     "supportURL": "https://discord.gg/kM5eyKzx5a",
     "defaultPrompt": [
-      "Help me profile a list of companies. Ask for their names or domains, then find each one's website, industry and employee count.",
-      "Help me compare how visible three websites are in Google search. Ask for the domains and market first.",
-      "Help me understand what customers say about an app. Ask for the app and store, then summarize recent reviews."
+      "Find the industry, employee count and headquarters of example.com.",
+      "Compare organic search traffic and top keywords for example.com and a competitor in the US.",
+      "Summarize what users say about an app in its recent App Store reviews."
     ],
     "brandColor": "#F26339",
     "composerIcon": "./assets/icon.png",
