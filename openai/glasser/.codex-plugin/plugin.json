@@ -45,31 +45,31 @@
           "positive": [
             {
               "description": "Discover endpoints for a research goal without running anything.",
-              "prompt": "What Glasser endpoints could help me find the industry and employee count of stripe.com? Show the options before any paid research.",
+              "prompt": "Which Glasser endpoints can find the industry and employee count of stripe.com? Show me the options first and don't run anything yet.",
               "tools_triggered": "search",
               "expected_behavior": "Returns relevant endpoints and explains which part of the request each can support, without running any."
             },
             {
-              "description": "Inspect the exact input contract and Price of a discovered endpoint.",
-              "prompt": "For the company endpoint you just found, get its full input schema and Price before preparing a request. Do not run it yet.",
+              "description": "Inspect the input contract of a discovered endpoint without running it.",
+              "prompt": "For the company endpoint you just found, show me what input it needs. Do not run it yet.",
               "tools_triggered": "inspect",
-              "expected_behavior": "Returns the endpoint's required inputs, constraints and Price without running it."
+              "expected_behavior": "Returns the endpoint's required inputs and constraints, with its Price, without running it."
             },
             {
-              "description": "Run an inspected request after explicit matching authorization.",
-              "prompt": "I authorize the stripe.com company lookup exactly as inspected above, at the stated Price. Run it now and summarize the result.",
+              "description": "Run a prepared lookup after the user approves it.",
+              "prompt": "Go ahead and run the stripe.com company lookup you prepared, then summarize the result.",
               "tools_triggered": "run",
-              "expected_behavior": "Runs only the authorized call and reports the result, the run status and the actual charge."
+              "expected_behavior": "States the endpoint and its Price and asks for confirmation if it has not been given, then runs only that call and reports the result, the run status and the actual charge."
             },
             {
               "description": "Retrieve the result of an asynchronous run that is still working.",
-              "prompt": "Summarize what users say about the Duolingo app in its recent App Store reviews. I authorize one lookup up to $0.05; if the run is still working, get its result when it is ready.",
+              "prompt": "Summarize what users say about the Duolingo app in its recent App Store reviews. Go ahead and run the lookup; if it is still working, get the result when it is ready.",
               "tools_triggered": "search, inspect, run, runs_get",
-              "expected_behavior": "Runs one authorized review lookup; when the run returns QUEUED or RUNNING, polls runs_get until it completes, then summarizes the reviews with the run status and the charge."
+              "expected_behavior": "Runs one review lookup after the user's approval; when the run returns QUEUED or RUNNING, polls runs_get until it completes, then summarizes the reviews with the run status and the charge."
             },
             {
-              "description": "Inspect two endpoints and report each Price separately without running either.",
-              "prompt": "Inspect the two company endpoints you found, and tell me separately what each needs and what each costs. Do not run either.",
+              "description": "Inspect two endpoints and report each one's inputs separately without running either.",
+              "prompt": "Inspect the two company endpoints you found and tell me separately what each one needs. Do not run either.",
               "tools_triggered": "inspect",
               "expected_behavior": "Reports each endpoint's inputs and Price separately and does not run either."
             }
