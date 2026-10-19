@@ -1,0 +1,91 @@
+{
+  "name": "glasser",
+  "version": "1.0.0",
+  "description": "Glasser helps users discover data endpoints, inspect their inputs and Price, and run authorized company, people, search, website, review, social, place, news and property research through ChatGPT.",
+  "author": {
+    "name": "Glasser",
+    "url": "https://glasser.ai"
+  },
+  "homepage": "https://glasser.ai",
+  "license": "MIT",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Glasser",
+    "shortDescription": "Research companies, people and the web",
+    "longDescription": "Glasser helps users discover data endpoints, inspect their inputs and Price, and run authorized company, people, search, website, review, social, place, news and property research through ChatGPT.",
+    "developerName": "Glasser",
+    "category": "Business & Operations",
+    "capabilities": [
+      "Company research",
+      "People research",
+      "Search and SEO research",
+      "Website and review research",
+      "Social research",
+      "Local place research",
+      "News research",
+      "Property research"
+    ],
+    "websiteURL": "https://glasser.ai",
+    "privacyPolicyURL": "https://glasser.ai/privacy-policy",
+    "termsOfServiceURL": "https://glasser.ai/terms-of-service",
+    "supportURL": "https://discord.gg/kM5eyKzx5a",
+    "defaultPrompt": [
+      "Help me profile a list of companies. Ask for the company names or domains, then find each one's website, industry and employee count.",
+      "Help me compare how visible three websites are in Google search. Ask for the domains and market first.",
+      "Help me understand what customers say about an app. Ask for the app and store, then summarize recent reviews."
+    ],
+    "brandColor": "#F26339",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
+    "logoDark": "./assets/icon.png"
+  },
+  "extensions": {
+    "com.openai": {
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Discover endpoints for a research goal without running anything.",
+              "prompt": "What Glasser endpoints could help me find the industry and employee count of stripe.com? Show the options before any paid research.",
+              "tools_triggered": "search",
+              "expected_behavior": "Returns relevant endpoints and explains which part of the request each can support, without running any."
+            },
+            {
+              "description": "Inspect the exact input contract and Price of a discovered endpoint.",
+              "prompt": "For the company endpoint you just found, get its full input schema and Price before preparing a request. Do not run it yet.",
+              "tools_triggered": "inspect",
+              "expected_behavior": "Returns the endpoint's required inputs, constraints and Price without running it."
+            },
+            {
+              "description": "Run an inspected request after explicit matching authorization.",
+              "prompt": "I authorize the stripe.com company lookup exactly as inspected above, at the stated Price. Run it now and summarize the result.",
+              "tools_triggered": "run",
+              "expected_behavior": "Runs only the authorized call and reports the result, the run status and the actual charge."
+            },
+            {
+              "description": "Retrieve the result of a run that is still working.",
+              "prompt": "The last run is still running. Get its result when it is ready.",
+              "tools_triggered": "runs_get",
+              "expected_behavior": "Returns the run's current status and, once completed, its output and charge."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Do not invoke the plugin for general writing from supplied material.",
+              "prompt": "Rewrite this paragraph to sound clearer and shorter."
+            },
+            {
+              "description": "Do not invoke the plugin for personal calendar management.",
+              "prompt": "What meetings do I have tomorrow, and can you move the first one?"
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "Nothing is sold in ChatGPT. Users sign in to an existing Glasser account with OAuth; no checkout, subscription or upgrade flow appears in the plugin."
+      },
+      "publication": {
+        "release_notes": "First submission of Glasser: one skill and the Glasser MCP server (search endpoints, inspect their inputs and Price, run with the user's authorization, get run results)."
+      }
+    }
+  }
+}

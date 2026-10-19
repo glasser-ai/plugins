@@ -1,0 +1,7 @@
+interface:
+  display_name: "Glasser"
+  short_description: "Research companies, people and the web"
+  icon_small: "./assets/icon.png"
+  icon_large: "./assets/icon.png"
+  brand_color: "#F26339"
+  default_prompt: "Use $glasser to profile a list of companies: find each one's website, industry and employee count."
