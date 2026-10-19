@@ -1,7 +1,7 @@
 {
   "name": "glasser",
   "version": "1.0.0",
-  "description": "Research companies, markets and the web inside ChatGPT. Glasser connects ChatGPT to live data on companies and prospects, search rankings and keywords, websites and online reviews, social profiles, local businesses, news and property records. Ask things like \"What industry is example.com in and how many employees does it have?\" or \"Compare search visibility for example.com and a competitor\", and ChatGPT finds a suitable data endpoint, shows its inputs and Price, and runs it once you approve. Built for sales, marketing and research teams that need answers grounded in returned data.",
+  "description": "Research companies, markets and the web inside ChatGPT. Glasser connects ChatGPT to live data on companies and prospects, search rankings and keywords, websites and online reviews, social profiles, local businesses, news and property records. Ask things like \"What industry is example.com in and how many employees does it have?\" or \"Compare search visibility for example.com and a competitor\", and ChatGPT finds a suitable data endpoint, shows what it needs, and runs it once you approve. Built for sales, marketing and research teams that need answers grounded in returned data.",
   "author": {
     "name": "Glasser",
     "url": "https://glasser.ai"
@@ -13,7 +13,7 @@
   "interface": {
     "displayName": "Glasser",
     "shortDescription": "Company, web & market data",
-    "longDescription": "Research companies, markets and the web inside ChatGPT. Glasser connects ChatGPT to live data on companies and prospects, search rankings and keywords, websites and online reviews, social profiles, local businesses, news and property records. Ask things like \"What industry is example.com in and how many employees does it have?\" or \"Compare search visibility for example.com and a competitor\", and ChatGPT finds a suitable data endpoint, shows its inputs and Price, and runs it once you approve. Built for sales, marketing and research teams that need answers grounded in returned data.",
+    "longDescription": "Research companies, markets and the web inside ChatGPT. Glasser connects ChatGPT to live data on companies and prospects, search rankings and keywords, websites and online reviews, social profiles, local businesses, news and property records. Ask things like \"What industry is example.com in and how many employees does it have?\" or \"Compare search visibility for example.com and a competitor\", and ChatGPT finds a suitable data endpoint, shows what it needs, and runs it once you approve. Built for sales, marketing and research teams that need answers grounded in returned data.",
     "developerName": "Glasser",
     "category": "Business & Operations",
     "capabilities": [
