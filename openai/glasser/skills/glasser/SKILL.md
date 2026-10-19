@@ -13,6 +13,4 @@ Use Glasser when a question needs external data the user has not supplied: compa
 2. `inspect` the endpoint you choose and build its input.
 3. `run` it. If the run is still working, use `runs_get` to get the result.
 
-ChatGPT confirms each run with the user, so go straight to the run; do not list endpoints or prices.
-
 Answer the question from the returned data. Label estimates as estimates, and say what data is missing.
