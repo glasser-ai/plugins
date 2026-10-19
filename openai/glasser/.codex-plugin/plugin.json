@@ -9,9 +9,10 @@
   "homepage": "https://glasser.ai",
   "license": "MIT",
   "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Glasser",
-    "shortDescription": "Research companies, people and the web",
+    "shortDescription": "Research companies and people",
     "longDescription": "Glasser helps users discover data endpoints, inspect their inputs and Price, and run authorized company, people, search, website, review, social, place, news and property research through ChatGPT.",
     "developerName": "Glasser",
     "category": "Business & Operations",
@@ -30,7 +31,7 @@
     "termsOfServiceURL": "https://glasser.ai/terms-of-service",
     "supportURL": "https://discord.gg/kM5eyKzx5a",
     "defaultPrompt": [
-      "Help me profile a list of companies. Ask for the company names or domains, then find each one's website, industry and employee count.",
+      "Help me profile a list of companies. Ask for their names or domains, then find each one's website, industry and employee count.",
       "Help me compare how visible three websites are in Google search. Ask for the domains and market first.",
       "Help me understand what customers say about an app. Ask for the app and store, then summarize recent reviews."
     ],
@@ -63,10 +64,10 @@
               "expected_behavior": "Runs only the authorized call and reports the result, the run status and the actual charge."
             },
             {
-              "description": "Retrieve the result of a run that is still working.",
-              "prompt": "The last run is still running. Get its result when it is ready.",
-              "tools_triggered": "runs_get",
-              "expected_behavior": "Returns the run's current status and, once completed, its output and charge."
+              "description": "Retrieve the result of an asynchronous run that is still working.",
+              "prompt": "Summarize what users say about the Duolingo app in its recent App Store reviews. I authorize one lookup up to $0.05; if the run is still working, get its result when it is ready.",
+              "tools_triggered": "search, inspect, run, runs_get",
+              "expected_behavior": "Runs one authorized review lookup; when the run returns QUEUED or RUNNING, polls runs_get until it completes, then summarizes the reviews with the run status and the charge."
             },
             {
               "description": "Inspect two endpoints and report each Price separately without running either.",
