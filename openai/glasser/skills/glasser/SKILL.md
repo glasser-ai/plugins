@@ -38,6 +38,7 @@ If a run fails, returns too few rows, or returns figures that do not fit the tar
 ## Answer
 
 - Answer the user's question directly, in the structure they asked for.
+- Show the answer itself. Leave out run IDs, HTTP status codes and run links unless the user asks for them.
 - Use only figures from the returned data. Label provider estimates as estimates.
 - Missing, private, blocked or empty data remains unknown; it is never zero or permission to guess.
 - Say what data is missing and why.
