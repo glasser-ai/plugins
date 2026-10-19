@@ -67,6 +67,12 @@
               "prompt": "The last run is still running. Get its result when it is ready.",
               "tools_triggered": "runs_get",
               "expected_behavior": "Returns the run's current status and, once completed, its output and charge."
+            },
+            {
+              "description": "Inspect two endpoints and report each Price separately without running either.",
+              "prompt": "Inspect the two company endpoints you found, and tell me separately what each needs and what each costs. Do not run either.",
+              "tools_triggered": "inspect",
+              "expected_behavior": "Reports each endpoint's inputs and Price separately and does not run either."
             }
           ],
           "negative": [
@@ -77,6 +83,10 @@
             {
               "description": "Do not invoke the plugin for personal calendar management.",
               "prompt": "What meetings do I have tomorrow, and can you move the first one?"
+            },
+            {
+              "description": "Do not invoke the plugin for a question general knowledge can answer.",
+              "prompt": "Explain the difference between SEO and SEM."
             }
           ]
         },
