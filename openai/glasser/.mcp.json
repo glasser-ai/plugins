@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "glasser": {
+      "type": "http",
+      "url": "https://api.glasser.ai/mcp?toolset=directory"
+    }
+  }
+}

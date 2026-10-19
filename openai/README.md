@@ -2,7 +2,7 @@
 
 `openai/glasser/` is the package submitted to the OpenAI plugin directory (ChatGPT and Codex). It is separate from `plugins/glasser/`, which serves Claude Code, Cursor, Codex CLI and OpenClaw: that skill teaches the `glasser` CLI, which a ChatGPT conversation cannot run, and its listing text does not meet the directory's commerce rules.
 
-The package has one skill and no MCP configuration: the directory rejects MCP configuration inside the ZIP. The MCP server is added in the portal with **With MCP**:
+The package has one skill and one remote MCP server in `.mcp.json`:
 
 ```
 https://api.glasser.ai/mcp?toolset=directory
@@ -15,7 +15,7 @@ https://api.glasser.ai/mcp?toolset=directory
 Run from this directory:
 
 ```bash
-(cd glasser && zip -r -X ../glasser-openai.zip .codex-plugin skills assets)
+(cd glasser && zip -r -X ../glasser-openai.zip .codex-plugin .mcp.json skills assets)
 ```
 
 Upload `glasser-openai.zip` in the plugin portal and keep the listing text in `glasser/.codex-plugin/plugin.json` as the single source.

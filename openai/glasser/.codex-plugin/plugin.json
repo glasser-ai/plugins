@@ -1,7 +1,7 @@
 {
   "name": "glasser",
   "version": "1.0.0",
-  "description": "Glasser helps users discover data endpoints, inspect their inputs and Price, and run authorized company, people, search, website, review, social, place, news and property research through ChatGPT.",
+  "description": "Research companies, markets and the web inside ChatGPT. Glasser connects ChatGPT to live data on companies and prospects, search rankings and keywords, websites and online reviews, social profiles, local businesses, news and property records. Ask things like \"What industry is example.com in and how many employees does it have?\" or \"Compare search visibility for example.com and a competitor\", and ChatGPT finds a suitable data endpoint, shows what it needs, and runs it once you approve. Built for sales, marketing and research teams that need answers grounded in returned data.",
   "author": {
     "name": "Glasser",
     "url": "https://glasser.ai"
@@ -9,30 +9,29 @@
   "homepage": "https://glasser.ai",
   "license": "MIT",
   "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Glasser",
-    "shortDescription": "Research companies, people and the web",
-    "longDescription": "Glasser helps users discover data endpoints, inspect their inputs and Price, and run authorized company, people, search, website, review, social, place, news and property research through ChatGPT.",
+    "shortDescription": "Company, web & market data",
+    "longDescription": "Research companies, markets and the web inside ChatGPT. Glasser connects ChatGPT to live data on companies and prospects, search rankings and keywords, websites and online reviews, social profiles, local businesses, news and property records. Ask things like \"What industry is example.com in and how many employees does it have?\" or \"Compare search visibility for example.com and a competitor\", and ChatGPT finds a suitable data endpoint, shows what it needs, and runs it once you approve. Built for sales, marketing and research teams that need answers grounded in returned data.",
     "developerName": "Glasser",
     "category": "Business & Operations",
     "capabilities": [
-      "Company research",
-      "People research",
-      "Search and SEO research",
-      "Website and review research",
-      "Social research",
-      "Local place research",
-      "News research",
-      "Property research"
+      "Company data",
+      "Prospect research",
+      "SEO and search data",
+      "Reviews and social data",
+      "Local business data",
+      "News and property data"
     ],
     "websiteURL": "https://glasser.ai",
     "privacyPolicyURL": "https://glasser.ai/privacy-policy",
     "termsOfServiceURL": "https://glasser.ai/terms-of-service",
     "supportURL": "https://discord.gg/kM5eyKzx5a",
     "defaultPrompt": [
-      "Help me profile a list of companies. Ask for the company names or domains, then find each one's website, industry and employee count.",
-      "Help me compare how visible three websites are in Google search. Ask for the domains and market first.",
-      "Help me understand what customers say about an app. Ask for the app and store, then summarize recent reviews."
+      "Find the industry, employee count and headquarters of example.com.",
+      "Compare organic search traffic and top keywords for example.com and a competitor in the US.",
+      "Summarize what users say about an app in its recent App Store reviews."
     ],
     "brandColor": "#F26339",
     "composerIcon": "./assets/icon.png",
@@ -45,41 +44,52 @@
         "test_cases": {
           "positive": [
             {
-              "description": "Discover endpoints for a research goal without running anything.",
-              "prompt": "What Glasser endpoints could help me find the industry and employee count of stripe.com? Show the options before any paid research.",
-              "tools_triggered": "search",
-              "expected_behavior": "Returns relevant endpoints and explains which part of the request each can support, without running any."
+              "description": "Company lookup.",
+              "prompt": "Use Glasser to get the industry and employee count of stripe.com.",
+              "tools_triggered": "search, inspect, run",
+              "expected_behavior": "Returns Stripe's industry and employee count."
             },
             {
-              "description": "Inspect the exact input contract and Price of a discovered endpoint.",
-              "prompt": "For the company endpoint you just found, get its full input schema and Price before preparing a request. Do not run it yet.",
-              "tools_triggered": "inspect",
-              "expected_behavior": "Returns the endpoint's required inputs, constraints and Price without running it."
+              "description": "Website traffic.",
+              "prompt": "Use Glasser to get the estimated monthly US organic search traffic of notion.com.",
+              "tools_triggered": "search, inspect, run",
+              "expected_behavior": "Returns notion.com's estimated monthly US organic traffic, labelled as an estimate."
             },
             {
-              "description": "Run an inspected request after explicit matching authorization.",
-              "prompt": "I authorize the stripe.com company lookup exactly as inspected above, at the stated Price. Run it now and summarize the result.",
-              "tools_triggered": "run",
-              "expected_behavior": "Runs only the authorized call and reports the result, the run status and the actual charge."
+              "description": "Google results.",
+              "prompt": "Use Glasser to get the top 5 US Google results for \"project management software\".",
+              "tools_triggered": "search, inspect, run",
+              "expected_behavior": "Lists the top 5 US Google results with title and URL."
             },
             {
-              "description": "Retrieve the result of a run that is still working.",
-              "prompt": "The last run is still running. Get its result when it is ready.",
-              "tools_triggered": "runs_get",
-              "expected_behavior": "Returns the run's current status and, once completed, its output and charge."
+              "description": "Local places.",
+              "prompt": "Use Glasser to find 5 coffee shops near Union Square, San Francisco, with their ratings.",
+              "tools_triggered": "search, inspect, run",
+              "expected_behavior": "Lists 5 coffee shops near Union Square with their ratings."
+            },
+            {
+              "description": "News.",
+              "prompt": "Use Glasser to get 5 recent news headlines about OpenAI.",
+              "tools_triggered": "search, inspect, run",
+              "expected_behavior": "Lists 5 recent OpenAI news headlines with their source and date."
             }
           ],
           "negative": [
             {
-              "description": "Do not invoke the plugin for general writing from supplied material.",
-              "prompt": "Rewrite this paragraph to sound clearer and shorter."
+              "description": "The user supplies the text, so ChatGPT rewrites it directly without Glasser.",
+              "prompt": "Rewrite this paragraph to sound clearer and shorter: Our team has been working very hard over the past several months in order to make sure that the new version of the product is able to meet all of the needs that our customers have told us about, and we are very excited to finally be able to share it with everyone."
             },
             {
-              "description": "Do not invoke the plugin for personal calendar management.",
-              "prompt": "What meetings do I have tomorrow, and can you move the first one?"
+              "description": "A writing task that needs no external data; ChatGPT drafts the email directly without calling Glasser, even though a company is named.",
+              "prompt": "Draft a short cold email to Stripe's head of sales introducing our analytics product."
+            },
+            {
+              "description": "General knowledge; ChatGPT answers directly without calling Glasser, even though the topic is SEO.",
+              "prompt": "Explain the difference between SEO and SEM."
             }
           ]
         },
+        "demo_recording_url": "https://drive.google.com/file/d/1Z7adl99A19NRmlQ7fsq3k-e0rnumlpZq/view?usp=sharing",
         "commerce": false,
         "commerce_description": "Nothing is sold in ChatGPT. Users sign in to an existing Glasser account with OAuth; no checkout, subscription or upgrade flow appears in the plugin."
       },
