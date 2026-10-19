@@ -45,33 +45,33 @@
           "positive": [
             {
               "description": "Company lookup.",
-              "prompt": "Use Glasser to get the industry, employee count and headquarters of stripe.com.",
+              "prompt": "Use Glasser to get the industry and employee count of stripe.com.",
               "tools_triggered": "search, inspect, run",
-              "expected_behavior": "Returns Stripe's industry, employee count and headquarters from the returned data."
+              "expected_behavior": "Returns Stripe's industry and employee count."
             },
             {
-              "description": "SEO comparison.",
-              "prompt": "Use Glasser to compare the estimated monthly US organic traffic and number of ranking keywords of notion.com, coda.io and clickup.com.",
+              "description": "Website traffic.",
+              "prompt": "Use Glasser to get the estimated monthly US organic search traffic of notion.com.",
               "tools_triggered": "search, inspect, run",
-              "expected_behavior": "Returns a table of the three domains' estimated US organic traffic and ranking keyword counts, labelled as estimates."
+              "expected_behavior": "Returns notion.com's estimated monthly US organic traffic, labelled as an estimate."
             },
             {
-              "description": "Live Google results.",
-              "prompt": "Use Glasser to get the top 10 US Google results for \"best project management software\".",
+              "description": "Google results.",
+              "prompt": "Use Glasser to get the top 5 US Google results for \"project management software\".",
               "tools_triggered": "search, inspect, run",
-              "expected_behavior": "Lists the top 10 US Google results with title and URL."
+              "expected_behavior": "Lists the top 5 US Google results with title and URL."
             },
             {
               "description": "Local places.",
-              "prompt": "Use Glasser to find highly rated coffee shops near Union Square in San Francisco, with their ratings.",
+              "prompt": "Use Glasser to find 5 coffee shops near Union Square, San Francisco, with their ratings.",
               "tools_triggered": "search, inspect, run",
-              "expected_behavior": "Lists coffee shops near Union Square with their ratings and addresses."
+              "expected_behavior": "Lists 5 coffee shops near Union Square with their ratings."
             },
             {
-              "description": "Recent news.",
-              "prompt": "Use Glasser to find news about OpenAI from the past week.",
+              "description": "News.",
+              "prompt": "Use Glasser to get 5 recent news headlines about OpenAI.",
               "tools_triggered": "search, inspect, run",
-              "expected_behavior": "Summarizes the past week's OpenAI news with the source of each item."
+              "expected_behavior": "Lists 5 recent OpenAI news headlines with their source and date."
             }
           ],
           "negative": [
