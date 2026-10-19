@@ -44,34 +44,34 @@
         "test_cases": {
           "positive": [
             {
-              "description": "Company intelligence before a sales call: headcount and growth, funding and tech stack.",
-              "prompt": "Use Glasser to get Notion's (notion.com) current employee count, its headcount change over the last 12 months, its latest funding round with the lead investors, and the main technologies detected on its website.",
+              "description": "Company lookup.",
+              "prompt": "Use Glasser to get the industry, employee count and headquarters of stripe.com.",
               "tools_triggered": "search, inspect, run",
-              "expected_behavior": "Reports Notion's employee count and one-year headcount growth, latest funding round with investors, and main tech-stack tools from the returned data, labels estimates and says what is missing."
+              "expected_behavior": "Returns Stripe's industry, employee count and headquarters from the returned data."
             },
             {
-              "description": "SEO competitive data: organic traffic, ranking keywords, referring domains and a keyword gap.",
-              "prompt": "Use Glasser to compare notion.com, coda.io and clickup.com in the US on estimated monthly organic traffic, number of ranking keywords and referring domains. Then list 5 keywords where coda.io ranks in the top 10 and notion.com does not, with their monthly search volume.",
+              "description": "SEO comparison.",
+              "prompt": "Use Glasser to compare the estimated monthly US organic traffic and number of ranking keywords of notion.com, coda.io and clickup.com.",
               "tools_triggered": "search, inspect, run",
-              "expected_behavior": "Compares the three domains on estimated US organic traffic, ranking keywords and referring domains, and lists five keywords where coda.io ranks in the top 10 and notion.com does not, with monthly search volume."
+              "expected_behavior": "Returns a table of the three domains' estimated US organic traffic and ranking keyword counts, labelled as estimates."
             },
             {
-              "description": "Prospect list: companies matching firmographic filters with a hiring signal.",
-              "prompt": "Use Glasser to find 10 B2B SaaS companies in Germany with 50 to 200 employees that have open sales job postings right now. For each, show the company name, website, employee count and one open sales role.",
+              "description": "Live Google results.",
+              "prompt": "Use Glasser to get the top 10 US Google results for \"best project management software\".",
               "tools_triggered": "search, inspect, run",
-              "expected_behavior": "Lists up to 10 German B2B SaaS companies with 50 to 200 employees and open sales roles, with name, website, employee count and one open sales role each."
+              "expected_behavior": "Lists the top 10 US Google results with title and URL."
             },
             {
-              "description": "App Store review analysis; the run is asynchronous.",
-              "prompt": "Use Glasser to pull the 100 most recent US App Store reviews of the Duolingo app, then give me the three most common complaints and the three most praised features, each with a short quote.",
-              "tools_triggered": "search, inspect, run, runs_get",
-              "expected_behavior": "Gets the reviews with runs_get while the run is still working, then lists three common complaints and three praised features, each with a short quote from the returned reviews."
+              "description": "Local places.",
+              "prompt": "Use Glasser to find highly rated coffee shops near Union Square in San Francisco, with their ratings.",
+              "tools_triggered": "search, inspect, run",
+              "expected_behavior": "Lists coffee shops near Union Square with their ratings and addresses."
             },
             {
-              "description": "US property value and rent with comparable rentals.",
-              "prompt": "Use Glasser to get the estimated market value and estimated monthly rent for 2100 Guadalupe St, Austin, TX 78705, plus three comparable rentals nearby with their monthly rents.",
+              "description": "Recent news.",
+              "prompt": "Use Glasser to find news about OpenAI from the past week.",
               "tools_triggered": "search, inspect, run",
-              "expected_behavior": "Reports the property's estimated value and rent estimate and three comparable nearby rentals with their monthly rents, labelled as estimates."
+              "expected_behavior": "Summarizes the past week's OpenAI news with the source of each item."
             }
           ],
           "negative": [
