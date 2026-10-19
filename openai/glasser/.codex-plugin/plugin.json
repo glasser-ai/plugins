@@ -1,0 +1,102 @@
+{
+  "name": "glasser",
+  "version": "1.0.0",
+  "description": "Glasser finds the right data source for a research task, shows what it needs and what it will cost, and runs it once you approve. Look up companies and people, search visibility and keywords, websites and online reviews, social profiles, local businesses, news and property records, and get structured results back in the conversation. A Glasser account and sign-in are required.",
+  "author": {
+    "name": "Glasser",
+    "url": "https://glasser.ai"
+  },
+  "homepage": "https://glasser.ai",
+  "license": "MIT",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Glasser",
+    "shortDescription": "Business and web data for your research",
+    "longDescription": "Glasser finds the right data source for a research task, shows what it needs and what it will cost, and runs it once you approve. Look up companies and people, search visibility and keywords, websites and online reviews, social profiles, local businesses, news and property records, and get structured results back in the conversation. A Glasser account and sign-in are required.",
+    "developerName": "Glasser",
+    "category": "Data & Analytics",
+    "capabilities": [
+      "Company research",
+      "People lookup",
+      "Search visibility",
+      "Keyword research",
+      "Reviews",
+      "Social profiles",
+      "Local businesses",
+      "News",
+      "Property records"
+    ],
+    "websiteURL": "https://glasser.ai",
+    "privacyPolicyURL": "https://glasser.ai/privacy-policy",
+    "termsOfServiceURL": "https://glasser.ai/terms-of-service",
+    "supportURL": "https://discord.gg/kM5eyKzx5a",
+    "defaultPrompt": [
+      "Find the website, industry and employee count for each company in my list.",
+      "Compare how visible these three websites are in Google search.",
+      "Summarize what customers say about this app in recent reviews."
+    ],
+    "brandColor": "#F26339",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
+    "logoDark": "./assets/icon.png"
+  },
+  "extensions": {
+    "com.openai": {
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Find a data source for a task and show its inputs and cost before running anything.",
+              "prompt": "What could Glasser use to find the employee count and industry of stripe.com? Show me the options and what they cost before running anything.",
+              "tools_triggered": "search, inspect",
+              "expected_behavior": "ChatGPT searches, inspects the best match, and lists the source, the inputs it needs and its cost per call, without running it."
+            },
+            {
+              "description": "Run one company lookup after the user approves the stated cost.",
+              "prompt": "Look up the website, industry and employee count of notion.so. Tell me the cost first and wait for my go-ahead.",
+              "tools_triggered": "search, inspect, run",
+              "expected_behavior": "ChatGPT states the source and cost, waits for approval, then runs one call and reports the company details, the run status and the charge."
+            },
+            {
+              "description": "Compare the search visibility of several websites.",
+              "prompt": "Compare the organic search visibility of notion.so, coda.io and clickup.com in the US. Ask me before running anything.",
+              "tools_triggered": "search, inspect, run",
+              "expected_behavior": "After approval, a table with each domain's organic keywords and estimated traffic, labelled as estimates, with the charge for each call."
+            },
+            {
+              "description": "Summarize recent app reviews.",
+              "prompt": "Summarize what users say about the Duolingo app in its recent App Store reviews. Confirm the cost with me first.",
+              "tools_triggered": "search, inspect, run",
+              "expected_behavior": "After approval, a summary of common praise and complaints drawn from the returned reviews, naming the source, with the charge."
+            },
+            {
+              "description": "Check the workspace balance.",
+              "prompt": "How much balance does my Glasser workspace have?",
+              "tools_triggered": "balance",
+              "expected_behavior": "The balance, the amount held by in-flight runs and the available amount, in USD."
+            }
+          ],
+          "negative": [
+            {
+              "description": "General writing from supplied text; the plugin should not call any tool.",
+              "prompt": "Rewrite this paragraph to be shorter and clearer."
+            },
+            {
+              "description": "A question ChatGPT can answer from general knowledge; the plugin should not be used.",
+              "prompt": "Explain the difference between SEO and SEM."
+            },
+            {
+              "description": "Request for private account data; the plugin should decline and offer public data it can provide.",
+              "prompt": "Log into my competitor's Google Analytics and export their traffic."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "Nothing is sold in ChatGPT. Users sign in to an existing Glasser account with OAuth; no checkout, subscription or upgrade flow appears in the plugin."
+      },
+      "publication": {
+        "release_notes": "First submission of Glasser: one skill and the Glasser MCP server (search data sources, inspect inputs and cost, run with the user's approval, get run results, check balance)."
+      }
+    }
+  }
+}
