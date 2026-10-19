@@ -1,6 +1,6 @@
 ---
 name: glasser
-description: Research companies, people, search visibility, websites, reviews, social profiles, places, news or property records with Glasser endpoints. Use when a task needs external data that the user has not supplied and general knowledge cannot answer; do not use for rewriting, translating, summarizing or formatting supplied content.
+description: Research companies, prospects, search visibility, websites, reviews, social profiles, places, news or property records with Glasser endpoints. Use when a task needs external data that the user has not supplied and general knowledge cannot answer; do not use for rewriting, translating, summarizing or formatting supplied content.
 metadata:
   version: "1.0.0"
 ---
@@ -11,7 +11,7 @@ Turn a research question into a small set of authorized Glasser runs and an evid
 
 ## Start with scope
 
-Ask only for details that change the research: the companies, people, domains, apps or places in question, the market and language, and what the user wants to decide. If a target is ambiguous, offer likely interpretations and ask the user to confirm; do not silently select one. Reuse data the user already supplied instead of running the same research again.
+Ask only for details that change the research: the companies, prospects, domains, apps or places in question, the market and language, and what the user wants to decide. If a target is ambiguous, offer likely interpretations and ask the user to confirm; do not silently select one. Reuse data the user already supplied instead of running the same research again.
 
 ## Research workflow
 
