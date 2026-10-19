@@ -89,6 +89,7 @@
             }
           ]
         },
+        "demo_recording_url": "https://drive.google.com/file/d/1Z7adl99A19NRmlQ7fsq3k-e0rnumlpZq/view?usp=sharing",
         "commerce": false,
         "commerce_description": "Nothing is sold in ChatGPT. Users sign in to an existing Glasser account with OAuth; no checkout, subscription or upgrade flow appears in the plugin."
       },
