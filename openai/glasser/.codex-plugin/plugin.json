@@ -44,34 +44,34 @@
         "test_cases": {
           "positive": [
             {
-              "description": "Sales call brief: company profile, size, recent news and website traffic trend.",
-              "prompt": "I have a sales call with Notion next week. Give me a short brief: what the company does, how big it is, what has been in the news about it in the past month, and how its website traffic has trended recently.",
+              "description": "Company intelligence before a sales call: headcount and growth, funding and tech stack.",
+              "prompt": "Before my sales call with Notion, give me its employee count and headcount growth over the past year, its latest funding round and investors, and the main tools in its tech stack.",
               "tools_triggered": "search, inspect, run",
-              "expected_behavior": "After the user confirms each run in ChatGPT, returns a short brief covering Notion's business, size, news from the past month and recent website traffic trend, labels estimates as estimates and says what data is missing."
+              "expected_behavior": "After the user confirms each run in ChatGPT, reports Notion's employee count and one-year headcount growth, latest funding round with investors, and main tech-stack tools from the returned data, labels estimates and says what is missing."
             },
             {
-              "description": "Competitor search visibility and keyword gaps.",
-              "prompt": "Compare how visible notion.so, coda.io and clickup.com are in US Google search, and list five keywords where coda.io ranks in the top 10 but notion.so does not.",
+              "description": "SEO competitive data: organic traffic, ranking keywords, referring domains and a keyword gap.",
+              "prompt": "Compare notion.so, coda.io and clickup.com on estimated US organic traffic, number of ranking keywords and referring domains, and list five keywords where coda.io ranks in the top 10 but notion.so does not.",
               "tools_triggered": "search, inspect, run",
-              "expected_behavior": "After the user confirms each run in ChatGPT, compares the three domains' estimated US organic search visibility and lists five keywords where coda.io ranks in the top 10 and notion.so does not."
+              "expected_behavior": "After the user confirms each run in ChatGPT, compares the three domains on estimated US organic traffic, ranking keywords and referring domains, and lists five keywords where coda.io ranks in the top 10 and notion.so does not."
             },
             {
-              "description": "App feedback from recent App Store reviews; the run is asynchronous.",
+              "description": "Prospect list: companies matching firmographic filters with a hiring signal.",
+              "prompt": "Find 10 B2B software companies in Germany with 50 to 200 employees that are currently hiring for sales roles, with their website and employee count.",
+              "tools_triggered": "search, inspect, run",
+              "expected_behavior": "After the user confirms each run in ChatGPT, lists up to 10 German B2B software companies with 50 to 200 employees and open sales roles, with website and employee count."
+            },
+            {
+              "description": "App Store review analysis; the run is asynchronous.",
               "prompt": "What are the three most common complaints and the three most praised features in recent App Store reviews of the Duolingo app?",
               "tools_triggered": "search, inspect, run, runs_get",
-              "expected_behavior": "After the user confirms the run in ChatGPT, gets the result with runs_get while it is still working, then lists three common complaints and three praised features from the returned reviews with short examples."
+              "expected_behavior": "After the user confirms the run in ChatGPT, gets the result with runs_get while it is still working, then lists three common complaints and three praised features with short examples from the returned reviews."
             },
             {
-              "description": "Location research for a new coffee shop: nearby competitors, ratings and review themes.",
-              "prompt": "I'm thinking of opening a coffee shop near Union Square in San Francisco. Which coffee shops are already within walking distance, how are they rated, and what do reviewers praise or complain about most?",
+              "description": "US property value and rent with comparable rentals.",
+              "prompt": "What is the estimated market value and typical monthly rent for 2100 Guadalupe St, Austin, TX 78705, and what are three comparable rentals nearby?",
               "tools_triggered": "search, inspect, run",
-              "expected_behavior": "After the user confirms each run in ChatGPT, lists nearby coffee shops with their ratings and summarizes what reviewers praise and complain about most."
-            },
-            {
-              "description": "Creator research: YouTube channels in a niche with audience size and recent topics.",
-              "prompt": "Find three active YouTube channels that review project management software, with their subscriber counts and what their most recent videos were about.",
-              "tools_triggered": "search, inspect, run",
-              "expected_behavior": "After the user confirms each run in ChatGPT, lists three relevant YouTube channels with subscriber counts and the topics of their most recent videos."
+              "expected_behavior": "After the user confirms each run in ChatGPT, reports the property's estimated value and rent estimate and three comparable nearby rentals from the returned data, labelled as estimates."
             }
           ],
           "negative": [
