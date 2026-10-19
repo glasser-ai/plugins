@@ -44,47 +44,47 @@
         "test_cases": {
           "positive": [
             {
-              "description": "Discover endpoints for a research goal without running anything.",
-              "prompt": "Which Glasser endpoints can find the industry and employee count of stripe.com? Show me the options first and don't run anything yet.",
-              "tools_triggered": "search",
-              "expected_behavior": "Returns relevant endpoints and explains which part of the request each can support, without running any."
+              "description": "Company lookup: find a company's industry and size.",
+              "prompt": "Find the industry and employee count of stripe.com.",
+              "tools_triggered": "search, inspect, run",
+              "expected_behavior": "After the user confirms the run in ChatGPT, answers with Stripe's industry and employee count from the returned data, names the source, and reports the run status and charge."
             },
             {
-              "description": "Inspect the input contract of a discovered endpoint without running it.",
-              "prompt": "For the company endpoint you just found, show me what input it needs. Do not run it yet.",
-              "tools_triggered": "inspect",
-              "expected_behavior": "Returns the endpoint's required inputs and constraints, with its Price, without running it."
+              "description": "Search visibility: compare two websites' organic search traffic.",
+              "prompt": "Compare the organic search traffic of notion.so and coda.io in the US.",
+              "tools_triggered": "search, inspect, run",
+              "expected_behavior": "After the user confirms the run in ChatGPT, compares the two domains' estimated organic traffic in the US, labels the figures as estimates, and reports the charge."
             },
             {
-              "description": "Run a prepared lookup after the user approves it.",
-              "prompt": "Go ahead and run the stripe.com company lookup with the endpoint you just inspected, then summarize the result.",
-              "tools_triggered": "run",
-              "expected_behavior": "After the user confirms the call in ChatGPT, runs only that endpoint once and reports the result, the run status and the actual charge."
-            },
-            {
-              "description": "Retrieve the result of an asynchronous run that is still working.",
-              "prompt": "Summarize what users say about the Duolingo app in its recent App Store reviews. Go ahead and run the lookup; if it is still working, get the result when it is ready.",
+              "description": "App reviews: summarize recent reviews; the run is asynchronous.",
+              "prompt": "Summarize what users say about the Duolingo app in its recent App Store reviews.",
               "tools_triggered": "search, inspect, run, runs_get",
-              "expected_behavior": "After the user confirms the call in ChatGPT, runs one review lookup; when the run returns QUEUED or RUNNING, polls runs_get until it completes, then summarizes the reviews with the run status and the charge."
+              "expected_behavior": "After the user confirms the run in ChatGPT, polls runs_get while the run is QUEUED or RUNNING, then summarizes common praise and complaints from the returned reviews and reports the charge."
             },
             {
-              "description": "Inspect two endpoints and report each one's inputs separately without running either.",
-              "prompt": "Inspect the two company endpoints you found and tell me separately what each one needs. Do not run either.",
-              "tools_triggered": "inspect",
-              "expected_behavior": "Reports each endpoint's inputs and Price separately and does not run either."
+              "description": "Local businesses: find places in an area.",
+              "prompt": "Find highly rated coffee shops near Union Square in San Francisco.",
+              "tools_triggered": "search, inspect, run",
+              "expected_behavior": "After the user confirms the run in ChatGPT, lists coffee shops near Union Square with their ratings from the returned data and reports the charge."
+            },
+            {
+              "description": "News: recent coverage of a company.",
+              "prompt": "What has been in the news about Stripe this week?",
+              "tools_triggered": "search, inspect, run",
+              "expected_behavior": "After the user confirms the run in ChatGPT, summarizes this week's news about Stripe with the source of each item and reports the charge."
             }
           ],
           "negative": [
             {
-              "description": "Do not invoke the plugin for general writing from supplied material.",
-              "prompt": "Rewrite this paragraph to sound clearer and shorter."
+              "description": "The user supplies the text; ChatGPT rewrites it directly without Glasser.",
+              "prompt": "Rewrite this paragraph to sound clearer and shorter: Our team has been working very hard over the past several months in order to make sure that the new version of the product is able to meet all of the needs that our customers have told us about, and we are very excited to finally be able to share it with everyone."
             },
             {
-              "description": "Do not invoke the plugin for personal calendar management.",
+              "description": "Glasser has no calendar access; it should not be used, and ChatGPT should say it cannot reach the calendar through this plugin.",
               "prompt": "What meetings do I have tomorrow, and can you move the first one?"
             },
             {
-              "description": "Do not invoke the plugin for a question general knowledge can answer.",
+              "description": "General knowledge; ChatGPT answers directly without calling Glasser.",
               "prompt": "Explain the difference between SEO and SEM."
             }
           ]
