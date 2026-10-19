@@ -8,7 +8,7 @@ The package has one skill and no MCP configuration: the directory rejects MCP co
 https://api.glasser.ai/mcp?toolset=directory
 ```
 
-`toolset=directory` serves `search`, `inspect`, `run`, `runs_get` and `balance` with text that has no links, no add-funds wording and no provider names (ADR-0031 §9 in the Glasser API repository).
+`toolset=directory` serves `search`, `inspect`, `run` and `runs_get` with text that has no links, no add-funds wording and no provider names (ADR-0031 §9 in the Glasser API repository).
 
 ## Build the ZIP
 
