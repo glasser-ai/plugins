@@ -1,0 +1,96 @@
+{
+  "name": "glasser-prospect-lists",
+  "version": "0.1.0",
+  "description": "Build prospect lists from an ideal customer profile, a company directory or supplied company names. Find target companies, qualify them against your criteria, identify contacts at those companies, find and verify work emails, and optionally look up mobile numbers. Get separate company and contact tables with source evidence and a record of the research performed.",
+  "author": {
+    "name": "Glasser",
+    "url": "https://glasser.ai"
+  },
+  "homepage": "https://glasser.ai",
+  "license": "MIT",
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Glasser Prospect Lists",
+    "shortDescription": "Find companies and contacts",
+    "longDescription": "Build prospect lists from an ideal customer profile, a company directory or supplied company names. Find target companies, qualify them against your criteria, identify contacts at those companies, find and verify work emails, and optionally look up mobile numbers. Get separate company and contact tables with source evidence and a record of the research performed.",
+    "developerName": "Glasser",
+    "category": "Business & Operations",
+    "capabilities": [
+      "Company discovery",
+      "ICP qualification",
+      "Contact research",
+      "Email verification",
+      "Prospect lists"
+    ],
+    "websiteURL": "https://glasser.ai",
+    "privacyPolicyURL": "https://glasser.ai/privacy-policy",
+    "termsOfServiceURL": "https://glasser.ai/terms-of-service",
+    "supportURL": "https://discord.gg/kM5eyKzx5a",
+    "defaultPrompt": [
+      "Find 10 software companies in Germany with 51–200 employees, then find two engineering leaders with verified work emails at each.",
+      "Find sales leaders at stripe.com and adyen.com, and verify their work emails.",
+      "Build a qualified prospect list from the companies on a portfolio page I provide."
+    ],
+    "brandColor": "#F26339",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
+    "logoDark": "./assets/icon.png"
+  },
+  "extensions": {
+    "com.openai": {
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "ICP discovery, sample and company qualification before contact research.",
+              "prompt": "Find 5 Software Development companies headquartered in Germany with 51–200 employees and one engineering leader at each. Show the plan and current charges before starting.",
+              "tools_triggered": "list_company_industries, quote_prospect_calls, search_companies, search_people, find_work_email, verify_email, list_task_runs",
+              "expected_behavior": "Confirms scope and exclusions, reads exact industry labels and current charging rules, waits for approval, then samples companies and qualifies them before looking for people. Returns separate company and contact tables, unknown totals remain unknown, and all found emails receive an independent verdict. Fetches every task Run page for the usage record."
+            },
+            {
+              "description": "Company names are disambiguated before contact research.",
+              "prompt": "Find the canonical company domains for Stripe and Mercury. Ask me to resolve any ambiguous company names before looking for contacts.",
+              "tools_triggered": "quote_prospect_calls, lookup_company",
+              "expected_behavior": "Quotes the name lookups, waits for approval, returns candidate domains and asks about genuine ambiguity. Does not invent an entity or purchase contact details before disambiguation."
+            },
+            {
+              "description": "Known-source extraction uses the supplied page.",
+              "prompt": "Read https://www.ycombinator.com/companies and make a small sample of company domains from that page. Do not look up contacts yet.",
+              "tools_triggered": "quote_prospect_calls, fetch_source_page",
+              "expected_behavior": "Quotes and confirms the page read, extracts only companies actually returned by the page with source lineage, and reports blocked or incomplete content. Does not reconstruct the list through broad searches or fetch people."
+            },
+            {
+              "description": "Independent verification preserves risky and unknown results.",
+              "prompt": "Check whether hello@example.com is deliverable. Report the provider verdict and check time, and do not treat catch-all or unknown as valid.",
+              "tools_triggered": "quote_prospect_calls, verify_email",
+              "expected_behavior": "Gets approval for the check, reports the actual verdict even if invalid or unknown, uses completed_at for check time, and never calls an invalid verdict a failed lookup or invents a verification."
+            },
+            {
+              "description": "Optional phone lookup is separate and only requested explicitly.",
+              "prompt": "Find the mobile number associated with https://www.linkedin.com/in/patrickcollison. Show the current charging rules and ask before you run it.",
+              "tools_triggered": "quote_prospect_calls, find_phone",
+              "expected_behavior": "Quotes and confirms this specific lookup, returns the actual number or reports no result, and does not call, send a message or imply outreach permission."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Supplied-content editing needs no research tools.",
+              "prompt": "Make this sentence shorter: We help sales teams maintain accurate records of prospective customers."
+            },
+            {
+              "description": "General explanation needs no external data.",
+              "prompt": "Explain what an ideal customer profile is and how it differs from a buyer persona."
+            },
+            {
+              "description": "The plugin does not send outreach or operate an email account.",
+              "prompt": "Send a cold email to every person in my prospect list without showing me a draft."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "Users connect an existing Glasser account with OAuth. The plugin has no checkout, subscription, top-up or upgrade flow."
+      }
+    }
+  }
+}

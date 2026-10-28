@@ -19,3 +19,14 @@ Run from this directory:
 ```
 
 Upload `glasser-openai.zip` in the plugin portal and keep the listing text in `glasser/.codex-plugin/plugin.json` as the single source.
+
+
+## Glasser Prospect Lists
+
+`glasser-prospect-lists/` 是独立的 Prospect Lists 包，连接 `?toolset=prospect`。
+公司筛选、联系人、独立邮箱核验与按需手机号查询使用该插件自己的专用工具；不依赖
+通用 Glasser 插件或 CLI。包中包含 5 个正向、3 个反向审核用例。
+
+静态检查与打包：`node glasser-prospect-lists/scripts/pack.mjs`。
+先部署 Glasser API 中的 prospect 工具组，再执行审核用例、录制真实演示并补入
+`demo_recording_url`，最后提交。部署与真实调用验证完成前，不把 ZIP 标作可提审版本。

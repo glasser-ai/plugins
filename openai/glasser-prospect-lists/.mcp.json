@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "glasser-prospect": {
+      "type": "http",
+      "url": "https://api.glasser.ai/mcp?toolset=prospect&utm_source=glasser-prospect-lists&utm_medium=plugin"
+    }
+  }
+}

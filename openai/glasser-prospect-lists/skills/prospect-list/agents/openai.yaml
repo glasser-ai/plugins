@@ -1,0 +1,7 @@
+interface:
+  display_name: "Glasser Prospect Lists"
+  short_description: "Find companies and contacts"
+  icon_small: "./assets/icon.png"
+  icon_large: "./assets/icon.png"
+  brand_color: "#F26339"
+  default_prompt: "Use $prospect-list to build a qualified company list and find contacts with independently verified work emails."
