@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "glasser-competitor": {
+      "type": "http",
+      "url": "https://api.glasser.ai/mcp?toolset=competitor&utm_source=glasser-competitor-research&utm_medium=plugin"
+    }
+  }
+}

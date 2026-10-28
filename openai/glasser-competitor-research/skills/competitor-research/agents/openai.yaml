@@ -1,0 +1,7 @@
+interface:
+  display_name: "Glasser Competitor Research"
+  short_description: "Research your competitors"
+  icon_small: "./assets/icon.png"
+  icon_large: "./assets/icon.png"
+  brand_color: "#F26339"
+  default_prompt: "Use $competitor-research to profile a competitor's positioning, funding, team and hiring, with sources and a cost record."
