@@ -19,3 +19,13 @@ Run from this directory:
 ```
 
 Upload `glasser-openai.zip` in the plugin portal and keep the listing text in `glasser/.codex-plugin/plugin.json` as the single source.
+
+## Glasser Competitor Research
+
+`glasser-competitor-research/` 是独立的 Competitor Research 包，连接 `?toolset=competitor`。
+公司档案、融资、团队、招聘、流量、SEO、Google 广告、社媒和新闻使用该插件自己的专用工具;
+不依赖通用 Glasser 插件或 CLI。包中包含 5 个正向、3 个反向审核用例。
+
+静态检查与打包:`node glasser-competitor-research/scripts/pack.mjs`。
+先部署 Glasser API 中的 competitor 工具组，再执行审核用例、录制真实演示并补入
+`demo_recording_url`,最后提交。部署与真实调用验证完成前，不把 ZIP 标作可提审版本。

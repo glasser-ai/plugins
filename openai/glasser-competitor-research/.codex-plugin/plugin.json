@@ -1,0 +1,96 @@
+{
+  "name": "glasser-competitor-research",
+  "version": "0.1.0",
+  "description": "Research competitors from a name or domain. Profile each company's positioning, funding, founders and executives, open roles, website traffic, search rankings, Google ads, social accounts and history, then compare them side by side with sources and a record of the research performed.",
+  "author": {
+    "name": "Glasser",
+    "url": "https://glasser.ai"
+  },
+  "homepage": "https://glasser.ai",
+  "license": "MIT",
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Glasser Competitor Research",
+    "shortDescription": "Research your competitors",
+    "longDescription": "Research competitors from a name or domain. Profile each company's positioning, funding, founders and executives, open roles, website traffic, search rankings, Google ads, social accounts and history, then compare them side by side with sources and a record of the research performed.",
+    "developerName": "Glasser",
+    "category": "Business & Operations",
+    "capabilities": [
+      "Company profiles",
+      "Funding and team research",
+      "Hiring signals",
+      "Traffic and SEO",
+      "Competitive comparison"
+    ],
+    "websiteURL": "https://glasser.ai",
+    "privacyPolicyURL": "https://glasser.ai/privacy-policy",
+    "termsOfServiceURL": "https://glasser.ai/terms-of-service",
+    "supportURL": "https://discord.gg/kM5eyKzx5a",
+    "defaultPrompt": [
+      "Research linear.app: positioning, funding, team and hiring.",
+      "Compare notion.com and coda.io on funding, hiring and positioning.",
+      "Our product is airtable.com. Suggest a shortlist of competitors to research."
+    ],
+    "brandColor": "#F26339",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
+    "logoDark": "./assets/icon.png"
+  },
+  "extensions": {
+    "com.openai": {
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "A short competitor profile from funding and hiring.",
+              "prompt": "Use Glasser to research linear.app's funding rounds and open job postings, then write a short competitor profile.",
+              "tools_triggered": "quote_competitor_calls, inspect_funding, list_job_openings, list_task_runs",
+              "expected_behavior": "Returns a short profile of linear.app with its funding rounds, dates and investors, and its open roles by function and location. Says the job rows are capped and are not a total, and lists dimensions it did not collect under Coverage."
+            },
+            {
+              "description": "C-level executives.",
+              "prompt": "Use Glasser to list 3 C-level executives of stripe.com with their titles.",
+              "tools_triggered": "quote_competitor_calls, list_team_members",
+              "expected_behavior": "Lists 3 of stripe.com's C-level executives with their titles from the returned records, without email addresses or phone numbers."
+            },
+            {
+              "description": "Google ads.",
+              "prompt": "Use Glasser to list 5 Google ads linear.app is running, with when each was first and last shown.",
+              "tools_triggered": "quote_competitor_calls, list_google_ads",
+              "expected_behavior": "Lists 5 of linear.app's Google ads with format and first and last shown dates, gives Google's ad-count estimate separately, and says the data covers Google ads only, with no spend figures."
+            },
+            {
+              "description": "Two competitors compared on search traffic.",
+              "prompt": "Use Glasser to compare the estimated monthly US organic search traffic and ranking keyword count of notion.com and coda.io.",
+              "tools_triggered": "quote_competitor_calls, inspect_search_presence",
+              "expected_behavior": "Uses the same provider and country for both domains and shows the two domains' estimated US organic traffic and ranking keyword counts side by side, labelled as estimates."
+            },
+            {
+              "description": "A competitor shortlist.",
+              "prompt": "Use Glasser to suggest 5 companies similar to airtable.com that I could research as competitors.",
+              "tools_triggered": "quote_competitor_calls, find_similar_companies",
+              "expected_behavior": "Lists 5 companies similar to airtable.com with their domains and the reason each is similar, and does not research them until the user picks."
+            }
+          ],
+          "negative": [
+            {
+              "description": "A template request needs no external data.",
+              "prompt": "Give me a blank SWOT analysis template I can fill in myself."
+            },
+            {
+              "description": "A general explanation needs no external data.",
+              "prompt": "Explain the difference between direct and indirect competitors."
+            },
+            {
+              "description": "The plugin does not access private systems.",
+              "prompt": "Log in to my competitor's admin dashboard and download their customer list."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "Users connect an existing Glasser account with OAuth. The plugin has no checkout, subscription, top-up or upgrade flow."
+      }
+    }
+  }
+}
