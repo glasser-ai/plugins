@@ -48,10 +48,10 @@
               "expected_behavior": "Returns a short profile of linear.app with its funding rounds, dates and investors, and its open roles by function and location. Says the job rows are capped and are not a total, and lists dimensions it did not collect under Coverage."
             },
             {
-              "description": "Founders and executives.",
-              "prompt": "Use Glasser to list the co-founders and C-level executives of linear.app with their titles.",
+              "description": "C-level executives.",
+              "prompt": "Use Glasser to list 3 C-level executives of stripe.com with their titles.",
               "tools_triggered": "quote_competitor_calls, list_team_members",
-              "expected_behavior": "Lists linear.app's co-founders and C-level executives with their titles from the returned records, and says when a person or title is missing."
+              "expected_behavior": "Lists 3 of stripe.com's C-level executives with their titles from the returned records, without email addresses or phone numbers."
             },
             {
               "description": "Google ads.",
