@@ -19,3 +19,19 @@ first use. The plugin ships no executable code.
 The service behind it is governed by Glasser's
 [terms of service](https://glasser.ai/terms-of-service) and
 [privacy policy](https://glasser.ai/privacy-policy).
+
+## Documentation and support
+
+- Documentation: https://glasser.ai/docs
+- MCP setup: https://glasser.ai/docs/mcp-server
+- Support: support@glasser.ai
+- Privacy policy: https://glasser.ai/privacy-policy
+- Service terms: https://glasser.ai/terms-of-service
+
+## Accounts and paid services
+
+The Glasser service requires a Glasser account and Workspace. Data calls are
+pay-as-you-go and use the Workspace balance. Inspect the selected endpoint
+for its current price and outcome-specific charges before running it.
+The MIT license applies to this distribution package; the service has
+separate terms.
